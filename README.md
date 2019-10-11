@@ -12,6 +12,7 @@ Experimental feature: Instant death button which freezes your corpse in its exac
 OR Play as a dog which cannot die, but has access to a double jump OR Each numbered corpse has a different ability / attribute and can be summoned with the numpad.
 
 Controls:
+
 	Player 1
 		W: jump
 		A: left movement
