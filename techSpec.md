@@ -1,42 +1,25 @@
-The game is a platformer in which your death creates an object which can act like a moveable platform. Any sort of death freezes your corpse to the last position it was at, saving the previous 8. For example if there is a gap that you do not have the capacity to jump over, you will want to die to an enemy that is jumping over the hole so that there is a platform from which you died.To climb vertical walls, you will want to die in a stair-like platform so that you can advance.
+Creating an object on death should be feasible
+	- the player position coordinates will be reset to the stored coordinate values
+	- there will also be a rectangle of the size of the player drawn at the coordinates of the death of class platform
+	- its image will be an altered version of the cat image
 
-Additionally, if you die on solid ground, the object can be picked up and thrown as a weapon to get rid of enemies, collect items, or walk over dangerous obstacles. The corpses will also have special interactions like with quicksand, water/lava, and breakable platforms/walls; it’ll sink and disappear in quicksand, flow over with water and lava (but burn in lava), and break walls.
+This whole making the dead cats usable and interactive objects seems not very feasible considering it is not a main part of the game also I think it would make it too easy. 
 
-Your objectives will be to have first and foremost to get to the end of the level. However there will be collectibles (cans of tuna) which will gain access to a bonus level at the end of the game where the corpses gain additional properties. For example, the corpses will now provide a higher bounce or become sticky platforms whose bottoms can be climbed on. Collecting all the tuna cans can also  gain access to a new level theme of a cat toy room.
+Gravity on player:
+	- constantly be reducing the players position in the Y direction
+	- if they are in contact with a platform: disable gravity
+	- the jump function should increase the Y position with a greater value than gravity to allow Y position to go up
 
-Different levels will revolve around different environments and thus different mechanics. Each level will be made out a series of screens with each screen being its own checkpoint. (Think of it as sonic’s zones, except each level is only a screen)Current environments will be a river level / lava level with the flowing liquid, a jungle with hidden walls / breakable floors, a desert with quicksand and cactus obstacles, and the final level with remixes of each of the first three ones.
+The tuna can collectibles are doable
+	- there will be a variable with the number of tuna cans collected
+	- each time the position of the player equals the position of a defined tuna can, erase the tuna can at that position and increase the tuna cans collected variable by one
 
-Multiplayer functionality, the second player will be a ghost cat that acts like the first player, but can choose to take over one of the corpses if they land on it and press down instead of picking it up. As the corpse it will be invulnerable for a few seconds and then teleport to player one. As a possessed corpse, the ghost can levitate instead of jumping. The two cats should be able to stand on top of each other but not bounce.
+For multiplayer:
+	- check when down arrow pressed while player is on a corpse if the player is player 1 or player 2. if they are player two then set their position equal to the corpse below them, set a timer for invulnerability, erase the corpse below them, disable the gravity on the player.
 
-Experimental feature: Instant death button which freezes your corpse in its exact position
-OR Play as a dog which cannot die, but has access to a double jump OR Each numbered corpse has a different ability / attribute and can be summoned with the numpad.
-
-Controls:
-
-	Player 1
-		W: jump
-		A: left movement
-		D: Right movement
-		S: Pick up corpse
-		“ “ : throw corpse in the direction facing
-
-
-
-	Player 2:
-		UP arrow Jump/Levitate
-		Down arrow : Possess
-		Right arrow: Right movement
-		Left arrow: left movement
-
-	Player 1 EXPERIMENTAL
-		Each one gives the most recent corpse a new ability
-		num1
-		num2
-		num3
-		num4
-		num5
-		num6
-		num7
-		num8
-		num9
-https://docs.google.com/drawings/d/1aF8PeDjFv1ROJuGMVOQrLTX-siXA09QCSfQYAWvOJG8/edit?usp=sharing
+Instant death feature is very doable
+	- simply assign a button to execute the same function that occurs when the player encounters a hazard and dies
+Play as dog feature seems doable but the double jump feature might be tricky
+	- set the players available lives to 0 with each level
+	- maybe while player is not in contact with a platform, allow jump button to be pressed then immediately after disable it until they come in contact with another platforms
+Corpse ability feature seems like too much work with very little actual usage in the game
