@@ -12,6 +12,7 @@ Required Functions
 - jump
 - move (one for each direction)
 - collect tunaCan
+- becomeCorpse
 
 Required Libraries
 - we could probably get away with importing all the java libraries
@@ -42,12 +43,13 @@ The tuna can collectibles are doable
 	- 20-30 minutes
 
 For multiplayer:
-	- check when down arrow pressed while player is on a corpse if the player is player 1 or player 2. if they are player two then set their position equal to the corpse below them, set a timer for invulnerability, erase the corpse below them, disable the gravity on the player.
+	- check when down arrow pressed while player is on a corpse if the player is player 1 or player 2. if they are player two then set their position equal to the corpse below them, set a timer for invulnerability, erase the corpse below them, disable the gravity on the player. This would be the becomeCorpse function
 	- no significant performance impact
 	- two days
 
 Instant death feature is very doable
 	- simply assign a button to execute the same function that occurs when the player encounters a hazard and dies
+	- just call the killCat function
 	- no significant performance impact
 	- 5 minutes
 Play as dog feature seems doable but the double jump feature might be tricky
