@@ -14,8 +14,10 @@ function initializeCat(){
     x : 50,
     y: 50,
     v: 0,
-    a: .06,
-    lifeCount: 1,
-    tunaCount: 0
+    a: .3,
+    size: 25,
+    lifeCount: 9,
+    tunaCount: 0,
+    name: "Tuesday McDoom"
   }
 }
