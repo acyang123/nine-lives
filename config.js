@@ -1,3 +1,5 @@
+//honestly, I don't know what anything in this file does. I wouldn't touch any of them, except platforms, which you can add to and remove from with the functions described in the cat.js file (don't ask why they're in there)
+
 var GAME = {
   canvas : {
     width : 600,
@@ -22,6 +24,6 @@ var CAT = {
 var PLATFORMS = [
 {xpt: 100, ypt: 150, xl: 60, yl: 30},
 {xpt: 200, ypt: 230, xl: 60, yl: 30},
-{xpt: 400, ypt: 100, xl: 60,  yl: 200},
-{xpt: 0,  ypt:300,  xl: 600, yl: 200}
+{xpt: 400, ypt: 100, xl: 60, yl: 200},
+{xpt: 0,   ypt:300,  xl: 600, yl: 200}
 ];

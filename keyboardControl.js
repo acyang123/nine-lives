@@ -12,7 +12,7 @@ var CONTROLS = {
   },
 
 };
-
+//this makes the cat move when you're pressing the WASD buttons
 document.addEventListener('keydown', function(event) {
   switch (event.key) {
     case "w":
@@ -44,7 +44,7 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-
+//this makes the cat STOP moving when you're not pressing the WASD buttons
 document.addEventListener('keyup', function(event) {
   switch (event.key) {
     case "w":

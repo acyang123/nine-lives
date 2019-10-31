@@ -1,13 +1,10 @@
-/**
- *  handleCatAnimation moves the ship based on its direction and
- *    keyboard control
- *
- */
+//this just lets the cat have a picture. dont touch
 var catImage = new Image();
 
 
 function handleCatAnimation() {
 
+//this is the part that change's the cat's picture based on which life it's on. note that there's currently no way to change which life the cat is on, except by typing CAT.lifeCount-- in the inspect element console
   switch (CAT.lifeCount) {
     case 9:
       catImage.src = "Cat pics/black cat.jpg";
@@ -41,25 +38,22 @@ function handleCatAnimation() {
       break;
   }
 
-
-
-
-  if (CONTROLS.cat.up && CAT.v == 0) {
-    CAT.v = -6.5;
+//this lets the cat jump if she's on a platform
+  if (CONTROLS.cat.up && isOnAPlatform()!=-100) {
+    CAT.v = -6.5; //changing this value will affect how high the cat jumps
   }
 
   if (CONTROLS.cat.down) {
-    CAT.y += 2 * CAT.v;
+    CAT.y += 2 * CAT.v; //makes the cat fast fall if you're holding down
   } else {
-    CAT.y += CAT.v;
+    CAT.y += CAT.v; //makes the cat normal fall otherwise
   }
-
 
   if (CONTROLS.cat.left && !isRightOfAPlatform()) {
-    CAT.x -= 4;
+    CAT.x -= 4;//cat moves left
   }
   if (CONTROLS.cat.right && !isLeftOfAPlatform()) {
-    CAT.x += 4;
+    CAT.x += 4;//cat moves right
   }
 
   // Check if cat is leaving the boundary, if so, dont let it
@@ -68,10 +62,11 @@ function handleCatAnimation() {
   } else if (CAT.x + CAT.size > GAME.canvas.width) {
     CAT.x = 575;
   } else if (CAT.y < 0) {
-    //CAT.y = 0;
-  } //else if (CAT.y + CAT.size > GAME.canvas.height) {
-    //CAT.y = 275;
-    //CAT.v = 0;
+    //CAT.y = 0; if you uncomment this out, the cat will no longer be able to jump above the screen. currently its commented out cuz we like letting the cat jump above the screen
+  } else if (CAT.y + CAT.size > GAME.canvas.height) {
+    CAT.y = GAME.canvas.height-CAT.size;
+    CAT.v = 0;
+  }
   //}
 
   //Stop the cat if it is on a platform
@@ -79,115 +74,45 @@ function handleCatAnimation() {
       CAT.y = isOnAPlatform() - CAT.size;
       CAT.v = 0;
     }
-  else if (isUnderAPlatform()!=-100){
+  else if (isUnderAPlatform()!=-100){ //stops the cat if it hits the bottom of a platform
     CAT.y =isUnderAPlatform();
     CAT.v=CAT.a;
   }
   else {
-    CAT.v+=CAT.a;
+    CAT.v+=CAT.a; //applies gravity
   }
 
   }
 
 
 
-function RenderCat(context) {
+function RenderCat(context) { //draws the cat to the screen
   context.drawImage(catImage, CAT.x, CAT.y, CAT.size, CAT.size);
 }
 
-function isOnAPlatform() {
-  var b = -100;
-  for (const plat of PLATFORMS) {
-    if (CAT.x +CAT.size > plat.xpt && CAT.x < plat.xpt + plat.xl && CAT.y + CAT.size >= plat.ypt && CAT.y + CAT.size <= plat.ypt + 10) {
-      b = plat.ypt;
-    }
-  }
-  return b;
-}
 
-function isUnderAPlatform() {
-  var b = -100;
-  for (const plat of PLATFORMS) {
-    if (CAT.x +CAT.size > plat.xpt && CAT.x < plat.xpt + plat.xl && CAT.y >= plat.ypt +plat.yl -10 && CAT.y <= plat.ypt +plat.yl) {
-      b = plat.ypt + plat.yl;
-    }
-  }
-  return b;
-}
 
-function isRightOfAPlatform() {
-  var b = false;
-  for (const plat of PLATFORMS) {
-    if (CAT.x > plat.xpt +plat.xl -10 && CAT.x <= plat.xpt + plat.xl && CAT.y + CAT.size > plat.ypt && CAT.y  < plat.ypt + plat.yl) {
-      b = true;
-    };
-  }
-  return b;
-}
-
-function isLeftOfAPlatform() {
-  var b = false;
-  for (const plat of PLATFORMS) {
-    if (CAT.x +CAT.size >= plat.xpt && CAT.x +CAT.size <= plat.xpt +10  && CAT.y +CAT.size> plat.ypt && CAT.y  < plat.ypt + plat.yl) {
-      b = true;
-    };
-  }
-  return b;
-}
-
-function RenderPlatforms(context) {
+function RenderPlatforms(context) { //draws every platform in PLATFORMS onnto the screen
   for (const plat of PLATFORMS)
-    context.fillRect(plat.xpt, plat.ypt, plat.xl, plat.yl);
+    context.fillRect(plat.xpt, plat.ypt, plat.xl, plat.yl); //you can replace this with .drawImage once you have pictures for the platforms
 }
-/*
-function HandleNewObjectMovement() {
 
-  if (NEW_OBJECT.x > GAME.canvas.width - CAT.size) {
-    NEW_OBJECT.i *= -1.05;
-    NEW_OBJECT.j *= 1.05;
-    scoreMult += 1;
-  } else if (NEW_OBJECT.x < 0) {
-    NEW_OBJECT.i *= -1.05;
-    NEW_OBJECT.j *= 1.05;
-    scoreMult += 1;
-  } else if (NEW_OBJECT.y > GAME.canvas.height - CAT.size) {
-    NEW_OBJECT.i *= 1.05;
-    NEW_OBJECT.j *= -1.05;
-    scoreMult += 1;
-  } else if (NEW_OBJECT.y < 0) {
-    NEW_OBJECT.i *= 1.05;
-    NEW_OBJECT.j *= -1.05;
-    scoreMult += 1;
-  }
-  NEW_OBJECT.x += (1 * NEW_OBJECT.i);
-  NEW_OBJECT.y += (1 * NEW_OBJECT.j);
-  if (NEW_OBJECT.i > 600) {
-    GAME.started = false;
-  }
-
-  //if the spaceship is touching the object, increase the score
-  if (NEW_OBJECT.x <= CAT.x && NEW_OBJECT.x + CAT.size >= CAT.x && NEW_OBJECT.y <= CAT.y && NEW_OBJECT.y + CAT.size >= CAT.y) {
-    highscore += (1 * scoreMult);
-  }
-}
-*/
-function runGame() {
+function runGame() { //the basic game-running loop. handle with caution
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
 
-  if (GAME.started) {
+  if (GAME.started) { //when the player loses, GAME.started should be set to FALSE
 
-    // 1 - Reposition the objects
+    // 1 - Reposition the cat
     handleCatAnimation();
-    //HandleNewObjectMovement();
+
 
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 600, 300);
-    //  context.fillText("Score: " + highscore, 530, 20)
-    // 3 - Draw new items
+
+    // 3 - Draw the stuff to the screen
     RenderCat(context);
     RenderPlatforms(context);
-    //  RenderNewObject(context);
 
   } else {
     context.font = "30px Arial";
