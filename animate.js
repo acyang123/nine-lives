@@ -39,11 +39,11 @@ function handleCatAnimation() {
   }
 
 //this lets the cat jump if she's on a platform
-  if (CONTROLS.cat.up && isOnAPlatform()!=-100) {
+  if (CONTROLS.cat.up && isOnAPlatform()!=-100&&!CONTROLS.cat.down) {
     CAT.v = -6.5; //changing this value will affect how high the cat jumps
   }
 
-  if (CONTROLS.cat.down) {
+  if (CONTROLS.cat.down&&!CONTROLS.cat.up) {
     CAT.y += 2 * Math.abs(CAT.v); //makes the cat fast fall if you're holding down
   } else {
     CAT.y += CAT.v; //makes the cat normal fall otherwise
