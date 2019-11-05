@@ -82,7 +82,6 @@ CAT.x=50;
 CAT.y=50
 CAT.v=0;
 }
-
 function isOnAHazard() {
   var b = false;
   for (const haz of HAZARDS) {

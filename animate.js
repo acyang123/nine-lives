@@ -81,7 +81,9 @@ function handleCatAnimation() {
   else {
     CAT.v+=CAT.a; //applies gravity
   }
-
+  if (isOnAHazard()||isLeftOfAHazard()||isRightOfAHazard()||isUnderAHazard()){
+   killCat();
+ }
   }
 
 
