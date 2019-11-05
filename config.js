@@ -12,6 +12,8 @@ var GAME = {
 var CAT = {
   x : 50,
   y: 50,
+  spawnX: 50,
+  spawnY: 0,
   v: 0,
   a: 15,
   size: 25,
@@ -27,3 +29,6 @@ var PLATFORMS = [
 {xpt: 400, ypt: 100, xl: 60, yl: 200},
 {xpt: 0,   ypt:300,  xl: 600, yl: 200}
 ];
+var HAZARDS = [
+  {xpt:0, ypt:245,xl:45,yl:55 }
+]

@@ -90,9 +90,14 @@ function RenderCat(context) { //draws the cat to the screen
   context.drawImage(catImage, CAT.x, CAT.y, CAT.size, CAT.size);
 }
 
-
+function RenderHazards(context){
+  context.fillStyle = "#FF0000";
+  for (const haz of HAZARDS)
+    context.fillRect(haz.xpt, haz.ypt, haz.xl, haz.yl);
+}
 
 function RenderPlatforms(context) { //draws every platform in PLATFORMS onnto the screen
+  context.fillStyle = "#000000";
   for (const plat of PLATFORMS)
     context.fillRect(plat.xpt, plat.ypt, plat.xl, plat.yl); //you can replace this with .drawImage once you have pictures for the platforms
 }
@@ -105,7 +110,9 @@ function runGame() { //the basic game-running loop. handle with caution
 
     // 1 - Reposition the cat
     handleCatAnimation();
-
+    if (CONTROLS.cat.instaDeath){
+      killCat();
+    }
 
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 600, 300);
@@ -113,6 +120,7 @@ function runGame() { //the basic game-running loop. handle with caution
     // 3 - Draw the stuff to the screen
     RenderCat(context);
     RenderPlatforms(context);
+    RenderHazards(context);
 
   } else {
     context.font = "30px Arial";

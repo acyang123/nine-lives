@@ -72,3 +72,59 @@ function addPlatform(x, y, w, l){
 function newLevel(){
   PLATFORMS= [{xpt: 0,   ypt:300,  xl: 600, yl: 200}];
 }
+function killCat(){
+if(CAT.lifeCount>1){
+  addPlatform(CAT.x,CAT.y,CAT.size,CAT.size);
+  CONTROLS.cat.instaDeath=false;
+  CAT.lifeCount-=1;
+}
+CAT.x=50;
+CAT.y=50
+CAT.v=0;
+}
+
+function isOnAHazard() {
+  var b = false;
+  for (const haz of HAZARDS) {
+    if (CAT.x +CAT.size > haz.xpt && CAT.x < haz.xpt + haz.xl && CAT.y + CAT.size >= haz.ypt && CAT.y + CAT.size <= haz.ypt + 10) {
+      b = true;
+    }
+  }
+  return b;
+} //detects if the cat is on a platform, returns the PLATFORM's Y-POSITION if so, -100 otherwise
+
+function isUnderAHazard() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
+  var b = false;
+  for (const haz of HAZARDS) {
+    if (CAT.x +CAT.size > haz.xpt && CAT.x < haz.xpt + haz.xl && CAT.y >= haz.ypt +haz.yl -10 && CAT.y <= haz.ypt +haz.yl) {
+      b = true;
+    }
+  }
+  return b;
+}
+
+function isRightOfAHazard() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
+  var b = false;
+  for (const haz of HAZARDS) {
+    if (CAT.x > haz.xpt +haz.xl -10 && CAT.x <= haz.xpt + haz.xl && CAT.y + CAT.size > haz.ypt && CAT.y  < haz.ypt + haz.yl) {
+      b = true;
+    };
+  }
+  return b;
+}
+
+function isLeftOfAHazard() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
+  var b = false;
+  for (const haz of HAZARDS) {
+    if (CAT.x +CAT.size >= haz.xpt && CAT.x +CAT.size <= haz.xpt +10  && CAT.y +CAT.size> haz.ypt && CAT.y  < haz.ypt + haz.yl) {
+      b = true;
+    };
+  }
+  return b;
+}
+
+
+//this function adds a platform with its top left corner at (x,y), a width of w, and a length of l
+function addHazard(x, y, w, l){
+  HAZARDS.push({xpt: x, ypt: y, xl: w, yl: l});
+}

@@ -8,14 +8,15 @@ var CONTROLS = {
     up : false,
     down : false,
     left : false,
-    right : false
+    right : false,
+    instaDeath: false,
   },
 
 };
 //this makes the cat move when you're pressing the WASD buttons
 document.addEventListener('keydown', function(event) {
   switch (event.key) {
-    case "w":
+    case " ":
       CONTROLS.cat.up = true;
       break;
     case "s":
@@ -39,6 +40,12 @@ document.addEventListener('keydown', function(event) {
       case "D":
         CONTROLS.cat.right = true;
         break;
+        case "r":
+        CONTROLS.cat.instaDeath = true;
+        break;
+        case "R":
+        CONTROLS.cat.instaDeath = true;
+        break;
     default:
       break;
   }
@@ -47,7 +54,7 @@ document.addEventListener('keydown', function(event) {
 //this makes the cat STOP moving when you're not pressing the WASD buttons
 document.addEventListener('keyup', function(event) {
   switch (event.key) {
-    case "w":
+    case " ":
       CONTROLS.cat.up = false;
       break;
     case "s":
@@ -71,6 +78,10 @@ document.addEventListener('keyup', function(event) {
       case "D":
         CONTROLS.cat.right = false;
         break;
+        case "r":
+        CONTROLS.cat.instaDeath = false;
+        case "R":
+        CONTROLS.cat.instaDeath = false;
     default:
       break;
   }

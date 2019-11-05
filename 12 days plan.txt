@@ -1,0 +1,43 @@
+1	player object 	Assign an array of the possible pngs for the sprites,
+	Life counter: decreases every time the cat dies and moves to the next sprite
+	X and y coordinates to display the cat
+	Tuna count
+2	Platform object	Sprite for them
+	X and y coordinates
+	Scalar to determine what box surrounds it
+3	Player movement	Move the player up, down, left, and right, using wasd
+	Create 2 checks for interacting with platform
+	•	If it is on top of a platform, its y axis cannot decrease, if there is one above, its y axis cannot increase
+	•	If there is a platform directly to the left or right it cannot move in that direction
+	Make sure the cat cannot move outside of the canvas
+	Pressing down in the air should be a fast fall, accelerate at a faster rate
+	Player cannot jump again until they reach a platform
+	Create spawnpoint x and y coordinates
+4.0	Hazards objects	Sprite work for them
+	Create objects like the platform objects, instead od stopping movement in the direction, it calls the killCat function implemented below
+4.5	killCat function	Freeze the coordinates of the cat and draw a rectangle the size of the player at those coordinates with an altered cat image
+	Bind this to the R key to be called on command
+	The rectangle should now act like a platform
+	When this is called the player is teleported to a spawnpoint which will always at the bottom left
+5	Tuna can objects	Sprite work
+	X and y coordinates
+	Box around the entirety of the image
+	Whenever the player walks into the box the tuna can object, remove it from the screen and add 1 to the tunaCount
+6 Multiplayer Pt1	Player 2Object	Sprite work (1 alive and 1 dead)
+	Movement similar to player 1 except with arrow keys. 
+	No life counter, should interact with all object the same, the tuna count should not be separate
+
+7 Multiplayer Pt2	becomeCorpse function	Bind to rightAlt
+	When the becomeCorpse function is called, player 2 is frozen at its current position and acts like a platform for a limited amount of time and then teleports to player 1
+8	Dog object	Works exactly like the player 1 cat except it can double jump – can jump twice – jump ability refreshed when touch a platform
+9	Level designs pt 1	First create an end level object, when entered the player is moved to the next level, calls the next drawLevel function. Save each level as a function that draws the level. Should contain hazards and platforms and tuna cans and be beatable. See the readme for a level example. Make a minimum of three
+10	Level design pt 2	Continue work on levels
+				When final level is beat send the player to gamer.sex
+11	Create main screen pt 1	Draw a screen at the start of the game, make the option to select 2p or 1p.  Clone all the functions already coded to work in multiplayer
+	Add in a random 10% chance that when player1 is selected and only player 1 you can get dog instead of cat
+	Use the mouseover event to determine when the mouse is over the buttons for the different levels
+12	Create main screen pt 2	Continue work on main screen 
+13	Make corpses moveable	When “ “ is pressed on top of a corpse the corpse can be picked up and thrown with “ “. It’ll stop when it reaches a platform. 
+14	Make breakable platforms 	Breakable platforms act exactly like normal platforms, but when a corpse is throw at it 
+14	Make new levels	Use the new features to make new maps
+
