@@ -44,7 +44,7 @@ function handleCatAnimation() {
   }
 
   if (CONTROLS.cat.down) {
-    CAT.y += 2 * CAT.v; //makes the cat fast fall if you're holding down
+    CAT.y += 2 * Math.abs(CAT.v); //makes the cat fast fall if you're holding down
   } else {
     CAT.y += CAT.v; //makes the cat normal fall otherwise
   }
