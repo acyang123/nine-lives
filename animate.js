@@ -97,6 +97,14 @@ function RenderHazards(context){
   for (const haz of HAZARDS)
     context.fillRect(haz.xpt, haz.ypt, haz.xl, haz.yl);
 }
+function RenderTuna(context){
+  context.fillStyle = "#0000ff"
+  for (const tuna of TUNA){
+      if (!tuna.collected){
+      context.fillRect(tuna.xpt,tuna.ypt,25,25);
+    }
+    }
+}
 
 function RenderPlatforms(context) { //draws every platform in PLATFORMS onnto the screen
   context.fillStyle = "#000000";
@@ -123,6 +131,7 @@ function runGame() { //the basic game-running loop. handle with caution
     RenderCat(context);
     RenderPlatforms(context);
     RenderHazards(context);
+    RenderTuna(context);
 
   } else {
     context.font = "30px Arial";
