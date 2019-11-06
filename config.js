@@ -27,8 +27,9 @@ var PLATFORMS = [
 {xpt: 100, ypt: 150, xl: 60, yl: 30},
 {xpt: 200, ypt: 230, xl: 60, yl: 30},
 {xpt: 400, ypt: 100, xl: 60, yl: 200},
-{xpt: 0,   ypt:300,  xl: 600, yl: 200}
+{xpt: 0,   ypt:300,  xl: 600, yl: 200},
+{xpt:25, ypt:75 , xl: 50, yl: 15,}
 ];
 var HAZARDS = [
-  {xpt:0, ypt:245,xl:45,yl:55 }
+  {xpt:0, ypt:150,xl:45,yl:55 }
 ]
