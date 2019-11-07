@@ -10,7 +10,7 @@ function initializeCat(){
     started : true,
     level : 1
   }
-  CAT = { //x and y are the cat's spawn coordinates
+  CAT.Player1 = { //x and y are the cat's spawn coordinates
     x : 50,
     y: 50,
     v: 0, //this is the speed at which the cat is falling
@@ -25,7 +25,7 @@ function initializeCat(){
 function isOnAPlatform() {
   var b = -100;
   for (const plat of PLATFORMS) {
-    if (CAT.x +CAT.size > plat.xpt && CAT.x < plat.xpt + plat.xl && CAT.y + CAT.size >= plat.ypt && CAT.y + CAT.size <= plat.ypt + 10) {
+    if (CAT.Player1.x +CAT.Player1.size > plat.xpt && CAT.Player1.x < plat.xpt + plat.xl && CAT.Player1.y + CAT.Player1.size >= plat.ypt && CAT.Player1.y + CAT.Player1.size <= plat.ypt + 10) {
       b = plat.ypt;
     }
   }
@@ -35,7 +35,7 @@ function isOnAPlatform() {
 function isUnderAPlatform() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = -100;
   for (const plat of PLATFORMS) {
-    if (CAT.x +CAT.size > plat.xpt && CAT.x < plat.xpt + plat.xl && CAT.y >= plat.ypt +plat.yl -10 && CAT.y <= plat.ypt +plat.yl) {
+    if (CAT.Player1.x +CAT.Player1.size > plat.xpt && CAT.Player1.x < plat.xpt + plat.xl && CAT.Player1.y >= plat.ypt +plat.yl -10 && CAT.Player1.y <= plat.ypt +plat.yl) {
       b = plat.ypt + plat.yl;
     }
   }
@@ -45,7 +45,7 @@ function isUnderAPlatform() {//detects if the cat is under a platform, returns t
 function isRightOfAPlatform() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
   for (const plat of PLATFORMS) {
-    if (CAT.x > plat.xpt +plat.xl -10 && CAT.x <= plat.xpt + plat.xl && CAT.y + CAT.size > plat.ypt && CAT.y  < plat.ypt + plat.yl) {
+    if (CAT.Player1.x > plat.xpt +plat.xl -10 && CAT.Player1.x <= plat.xpt + plat.xl && CAT.Player1.y + CAT.Player1.size > plat.ypt && CAT.Player1.y  < plat.ypt + plat.yl) {
       b = true;
     };
   }
@@ -55,7 +55,7 @@ function isRightOfAPlatform() { //detects if cat is directly to the right of a p
 function isLeftOfAPlatform() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
   for (const plat of PLATFORMS) {
-    if (CAT.x +CAT.size >= plat.xpt && CAT.x +CAT.size <= plat.xpt +10  && CAT.y +CAT.size> plat.ypt && CAT.y  < plat.ypt + plat.yl) {
+    if (CAT.Player1.x +CAT.Player1.size >= plat.xpt && CAT.Player1.x +CAT.Player1.size <= plat.xpt +10  && CAT.Player1.y +CAT.Player1.size> plat.ypt && CAT.Player1.y  < plat.ypt + plat.yl) {
       b = true;
     };
   }
@@ -73,19 +73,19 @@ function newLevel(){
   PLATFORMS= [{xpt: 0,   ypt:300,  xl: 600, yl: 200}];
 }
 function killCat(){
-if(CAT.lifeCount>1){
-  addPlatform(CAT.x,CAT.y,CAT.size,CAT.size);
+if(CAT.Player1.lifeCount>1){
+  addPlatform(CAT.Player1.x,CAT.Player1.y,CAT.Player1.size,CAT.Player1.size);
   CONTROLS.cat.instaDeath=false;
-  CAT.lifeCount-=1;
+  CAT.Player1.lifeCount-=1;
 }
-CAT.x=50;
-CAT.y=50
-CAT.v=0;
+CAT.Player1.x=50;
+CAT.Player1.y=50
+CAT.Player1.v=0;
 }
 function isOnAHazard() {
   var b = false;
   for (const haz of HAZARDS) {
-    if (CAT.x +CAT.size > haz.xpt && CAT.x < haz.xpt + haz.xl && CAT.y + CAT.size >= haz.ypt && CAT.y + CAT.size <= haz.ypt + 10) {
+    if (CAT.Player1.x +CAT.Player1.size > haz.xpt && CAT.Player1.x < haz.xpt + haz.xl && CAT.Player1.y + CAT.Player1.size >= haz.ypt && CAT.Player1.y + CAT.Player1.size <= haz.ypt + 10) {
       b = true;
     }
   }
@@ -95,7 +95,7 @@ function isOnAHazard() {
 function isUnderAHazard() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = false;
   for (const haz of HAZARDS) {
-    if (CAT.x +CAT.size > haz.xpt && CAT.x < haz.xpt + haz.xl && CAT.y >= haz.ypt +haz.yl -10 && CAT.y <= haz.ypt +haz.yl) {
+    if (CAT.Player1.x +CAT.Player1.size > haz.xpt && CAT.Player1.x < haz.xpt + haz.xl && CAT.Player1.y >= haz.ypt +haz.yl -10 && CAT.Player1.y <= haz.ypt +haz.yl) {
       b = true;
     }
   }
@@ -105,7 +105,7 @@ function isUnderAHazard() {//detects if the cat is under a platform, returns the
 function isRightOfAHazard() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
   for (const haz of HAZARDS) {
-    if (CAT.x > haz.xpt +haz.xl -10 && CAT.x <= haz.xpt + haz.xl && CAT.y + CAT.size > haz.ypt && CAT.y  < haz.ypt + haz.yl) {
+    if (CAT.Player1.x > haz.xpt +haz.xl -10 && CAT.Player1.x <= haz.xpt + haz.xl && CAT.Player1.y + CAT.Player1.size > haz.ypt && CAT.Player1.y  < haz.ypt + haz.yl) {
       b = true;
     };
   }
@@ -115,7 +115,7 @@ function isRightOfAHazard() { //detects if cat is directly to the right of a pla
 function isLeftOfAHazard() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
   for (const haz of HAZARDS) {
-    if (CAT.x +CAT.size >= haz.xpt && CAT.x +CAT.size <= haz.xpt +10  && CAT.y +CAT.size> haz.ypt && CAT.y  < haz.ypt + haz.yl) {
+    if (CAT.Player1.x +CAT.Player1.size >= haz.xpt && CAT.Player1.x +CAT.Player1.size <= haz.xpt +10  && CAT.Player1.y +CAT.Player1.size> haz.ypt && CAT.Player1.y  < haz.ypt + haz.yl) {
       b = true;
     };
   }
@@ -130,7 +130,7 @@ function addHazard(x, y, w, l){
 function isOnATuna() {
   var b = false;
   for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.x +CAT.size > tuna.xpt && CAT.x < tuna.xpt + tuna.xl && CAT.y + CAT.size >= tuna.ypt && CAT.y + CAT.size <= tuna.ypt + 10) {
+    if (!tuna.collected&&CAT.Player1.x +CAT.Player1.size > tuna.xpt && CAT.Player1.x < tuna.xpt + tuna.xl && CAT.Player1.y + CAT.Player1.size >= tuna.ypt && CAT.Player1.y + CAT.Player1.size <= tuna.ypt + 10) {
       b = true;
       tuna.collected=true;
     }
@@ -141,7 +141,7 @@ function isOnATuna() {
 function isUnderATuna() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = false;
   for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.x +CAT.size > tuna.xpt && CAT.x < tuna.xpt + tuna.xl && CAT.y >= tuna.ypt +tuna.yl -10 && CAT.y <= tuna.ypt +tuna.yl) {
+    if (!tuna.collected&&CAT.Player1.x +CAT.Player1.size > tuna.xpt && CAT.Player1.x < tuna.xpt + tuna.xl && CAT.Player1.y >= tuna.ypt +tuna.yl -10 && CAT.Player1.y <= tuna.ypt +tuna.yl) {
       b = true;
       tuna.collected=true;
     }
@@ -152,7 +152,7 @@ function isUnderATuna() {//detects if the cat is under a platform, returns the B
 function isRightOfATuna() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
   for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.x > tuna.xpt +tuna.xl -10 && CAT.x <= tuna.xpt + tuna.xl && CAT.y + CAT.size > tuna.ypt && CAT.y  < tuna.ypt + tuna.yl) {
+    if (!tuna.collected&&CAT.Player1.x > tuna.xpt +tuna.xl -10 && CAT.Player1.x <= tuna.xpt + tuna.xl && CAT.Player1.y + CAT.Player1.size > tuna.ypt && CAT.Player1.y  < tuna.ypt + tuna.yl) {
       b = true;
       tuna.collected=true;
     };
@@ -163,7 +163,7 @@ function isRightOfATuna() { //detects if cat is directly to the right of a platf
 function isLeftOfATuna() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
   for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.x +CAT.size >= tuna.xpt && CAT.x +CAT.size <= tuna.xpt +10  && CAT.y +CAT.size> tuna.ypt && CAT.y  < tuna.ypt + tuna.yl) {
+    if (!tuna.collected&&CAT.Player1.x +CAT.Player1.size >= tuna.xpt && CAT.Player1.x +CAT.Player1.size <= tuna.xpt +10  && CAT.Player1.y +CAT.Player1.size> tuna.ypt && CAT.Player1.y  < tuna.ypt + tuna.yl) {
       b = true;
       tuna.collected=true;
     };

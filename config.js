@@ -10,6 +10,8 @@ var GAME = {
 };
 
 var CAT = {
+  tunaCount: 0,
+  Player1:{
   x : 50,
   y: 50,
   spawnX: 50,
@@ -18,8 +20,19 @@ var CAT = {
   a: 15,
   size: 25,
   lifeCount: 1,
-  tunaCount: 0,
   name: "Tuesday McDoom"
+},
+Player2:{
+x : 50,
+y: 50,
+spawnX: 50,
+spawnY: 0,
+v: 0,
+a: 15,
+size: 25,
+lifeCount: 1,
+name: "Tuesday McDoom"
+}
 };
 
 

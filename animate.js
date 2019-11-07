@@ -4,8 +4,8 @@ var catImage = new Image();
 
 function handleCatAnimation() {
 
-//this is the part that change's the cat's picture based on which life it's on. note that there's currently no way to change which life the cat is on, except by typing CAT.lifeCount-- in the inspect element console
-  switch (CAT.lifeCount) {
+//this is the part that change's the cat's picture based on which life it's on. note that there's currently no way to change which life the cat is on, except by typing CAT.Player1.lifeCount-- in the inspect element console
+  switch (CAT.Player1.lifeCount) {
     case 9:
       catImage.src = "Cat pics/black cat.jpg";
       break;
@@ -40,58 +40,58 @@ function handleCatAnimation() {
 
 //this lets the cat jump if she's on a platform
   if (CONTROLS.cat.up && isOnAPlatform()!=-100&&!CONTROLS.cat.down) {
-    CAT.v = -6.5; //changing this value will affect how high the cat jumps
+    CAT.Player1.v = -6.5; //changing this value will affect how high the cat jumps
   }
 
   if (CONTROLS.cat.down&&!CONTROLS.cat.up) {
-    CAT.y += 2 * Math.abs(CAT.v); //makes the cat fast fall if you're holding down
+    CAT.Player1.y += 2 * Math.abs(CAT.Player1.v); //makes the cat fast fall if you're holding down
   } else {
-    CAT.y += CAT.v; //makes the cat normal fall otherwise
+    CAT.Player1.y += CAT.Player1.v; //makes the cat normal fall otherwise
   }
 
   if (CONTROLS.cat.left && !isRightOfAPlatform()) {
-    CAT.x -= 4;//cat moves left
+    CAT.Player1.x -= 4;//cat moves left
   }
   if (CONTROLS.cat.right && !isLeftOfAPlatform()) {
-    CAT.x += 4;//cat moves right
+    CAT.Player1.x += 4;//cat moves right
   }
 
   // Check if cat is leaving the boundary, if so, dont let it
-  if (CAT.x < 0) {
-    CAT.x = 0;
-  } else if (CAT.x + CAT.size > GAME.canvas.width) {
-    CAT.x = 575;
-  } else if (CAT.y < 0) {
-    //CAT.y = 0; if you uncomment this out, the cat will no longer be able to jump above the screen. currently its commented out cuz we like letting the cat jump above the screen
-  } else if (CAT.y + CAT.size > GAME.canvas.height) {
-    CAT.y = GAME.canvas.height-CAT.size;
-    CAT.v = 0;
+  if (CAT.Player1.x < 0) {
+    CAT.Player1.x = 0;
+  } else if (CAT.Player1.x + CAT.Player1.size > GAME.canvas.width) {
+    CAT.Player1.x = 575;
+  } else if (CAT.Player1.y < 0) {
+    //CAT.Player1.y = 0; if you uncomment this out, the cat will no longer be able to jump above the screen. currently its commented out cuz we like letting the cat jump above the screen
+  } else if (CAT.Player1.y + CAT.Player1.size > GAME.canvas.height) {
+    CAT.Player1.y = GAME.canvas.height-CAT.Player1.size;
+    CAT.Player1.v = 0;
   }
   //}
 
   //Stop the cat if it is on a platform
   if (isOnAPlatform()!=-100){
-      CAT.y = isOnAPlatform() - CAT.size;
-      CAT.v = 0;
+      CAT.Player1.y = isOnAPlatform() - CAT.Player1.size;
+      CAT.Player1.v = 0;
     }
   else if (isUnderAPlatform()!=-100){ //stops the cat if it hits the bottom of a platform
-    CAT.y =isUnderAPlatform();
-    CAT.v=CAT.a;
+    CAT.Player1.y =isUnderAPlatform();
+    CAT.Player1.v=CAT.Player1.a;
   }
   else {
-    CAT.v+=CAT.a; //applies gravity
+    CAT.Player1.v+=CAT.Player1.a; //applies gravity
   }
   if (isOnAHazard()||isLeftOfAHazard()||isRightOfAHazard()||isUnderAHazard()){
    killCat();
  }
  if (isOnATuna()||isLeftOfATuna()||isRightOfATuna()||isUnderATuna()){
-   CAT.tunaCount+=1;
+   CAT.Player1.tunaCount+=1;
  }
   }
 
 
 function RenderCat(context) { //draws the cat to the screen
-  context.drawImage(catImage, CAT.x, CAT.y, CAT.size, CAT.size);
+  context.drawImage(catImage, CAT.Player1.x, CAT.Player1.y, CAT.Player1.size, CAT.Player1.size);
 }
 
 function RenderHazards(context){
