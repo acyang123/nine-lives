@@ -34,5 +34,5 @@ var HAZARDS = [
   {xpt:0, ypt:150,xl:45,yl:55 }
 ]
 var TUNA = [
-  {xpt:400, ypt: 50, collected: false}
+  {xpt:400, ypt:50, xl:25, yl: 25, collected: false}
 ]

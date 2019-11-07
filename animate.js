@@ -84,8 +84,10 @@ function handleCatAnimation() {
   if (isOnAHazard()||isLeftOfAHazard()||isRightOfAHazard()||isUnderAHazard()){
    killCat();
  }
+ if (isOnATuna()||isLeftOfATuna()||isRightOfATuna()||isUnderATuna()){
+   CAT.tunaCount+=1;
+ }
   }
-
 
 
 function RenderCat(context) { //draws the cat to the screen
@@ -101,7 +103,7 @@ function RenderTuna(context){
   context.fillStyle = "#0000ff"
   for (const tuna of TUNA){
       if (!tuna.collected){
-      context.fillRect(tuna.xpt,tuna.ypt,25,25);
+      context.fillRect(tuna.xpt,tuna.ypt,tuna.xl,tuna.yl);
     }
     }
 }

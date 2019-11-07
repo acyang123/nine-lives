@@ -127,3 +127,46 @@ function isLeftOfAHazard() {  //detects if cat is directly to the left of a plat
 function addHazard(x, y, w, l){
   HAZARDS.push({xpt: x, ypt: y, xl: w, yl: l});
 }
+function isOnATuna() {
+  var b = false;
+  for (const tuna of TUNA) {
+    if (!tuna.collected&&CAT.x +CAT.size > tuna.xpt && CAT.x < tuna.xpt + tuna.xl && CAT.y + CAT.size >= tuna.ypt && CAT.y + CAT.size <= tuna.ypt + 10) {
+      b = true;
+      tuna.collected=true;
+    }
+  }
+  return b;
+} //detects if the cat is on a platform, returns the PLATFORM's Y-POSITION if so, -100 otherwise
+
+function isUnderATuna() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
+  var b = false;
+  for (const tuna of TUNA) {
+    if (!tuna.collected&&CAT.x +CAT.size > tuna.xpt && CAT.x < tuna.xpt + tuna.xl && CAT.y >= tuna.ypt +tuna.yl -10 && CAT.y <= tuna.ypt +tuna.yl) {
+      b = true;
+      tuna.collected=true;
+    }
+  }
+  return b;
+}
+
+function isRightOfATuna() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
+  var b = false;
+  for (const tuna of TUNA) {
+    if (!tuna.collected&&CAT.x > tuna.xpt +tuna.xl -10 && CAT.x <= tuna.xpt + tuna.xl && CAT.y + CAT.size > tuna.ypt && CAT.y  < tuna.ypt + tuna.yl) {
+      b = true;
+      tuna.collected=true;
+    };
+  }
+  return b;
+}
+
+function isLeftOfATuna() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
+  var b = false;
+  for (const tuna of TUNA) {
+    if (!tuna.collected&&CAT.x +CAT.size >= tuna.xpt && CAT.x +CAT.size <= tuna.xpt +10  && CAT.y +CAT.size> tuna.ypt && CAT.y  < tuna.ypt + tuna.yl) {
+      b = true;
+      tuna.collected=true;
+    };
+  }
+  return b;
+}
