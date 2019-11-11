@@ -11,12 +11,19 @@ var CONTROLS = {
     right : false,
     instaDeath: false,
   },
-
+  player2: {
+    up: false,
+    down: false,
+    left: false,
+    right: false,
+  }
 };
 //this makes the cat move when you're pressing the WASD buttons
 document.addEventListener('keydown', function(event) {
   switch (event.key) {
     case " ":
+      CONTROLS.cat.up = true;
+    case "w":
       CONTROLS.cat.up = true;
       break;
     case "s":
@@ -57,6 +64,9 @@ document.addEventListener('keyup', function(event) {
     case " ":
       CONTROLS.cat.up = false;
       break;
+      case "w":
+        CONTROLS.cat.up = false;
+        break;
     case "s":
       CONTROLS.cat.down = false;
       break;

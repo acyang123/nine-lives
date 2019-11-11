@@ -95,15 +95,17 @@ function RenderCat(context) { //draws the cat to the screen
 }
 
 function RenderHazards(context){
-  context.fillStyle = "#FF0000";
+var hazard=new Image();
+hazard.src = "lava.jpg";
   for (const haz of HAZARDS)
-    context.fillRect(haz.xpt, haz.ypt, haz.xl, haz.yl);
+    context.drawImage(hazard,haz.xpt, haz.ypt, haz.xl, haz.yl);
 }
 function RenderTuna(context){
-  context.fillStyle = "#0000ff"
+  var tuna1 = new Image();
+  tuna1.src= " tuna.jpeg"
   for (const tuna of TUNA){
       if (!tuna.collected){
-      context.fillRect(tuna.xpt,tuna.ypt,tuna.xl,tuna.yl);
+      context.drawImage(tuna1,tuna.xpt,tuna.ypt,tuna.xl,tuna.yl);
     }
     }
 }
