@@ -16,6 +16,7 @@ var CONTROLS = {
     down: false,
     left: false,
     right: false,
+    instaDeath: false,
   }
 };
 //this makes the cat move when you're pressing the WASD buttons
@@ -64,6 +65,9 @@ document.addEventListener('keydown', function(event) {
         break;
         case "ArrowDown":
         CONTROLS.player2.down=true;
+        break;
+        case "Alt":
+        CONTROLS.player2.instaDeath=true;
         break;
     default:
       break;
@@ -117,6 +121,9 @@ document.addEventListener('keyup', function(event) {
         break;
         case "ArrowDown":
         CONTROLS.player2.down=false;
+        break;
+        case "Alt":
+        CONTROLS.player2.instaDeath=false;
         break;
     default:
       break;

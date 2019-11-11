@@ -52,6 +52,9 @@ if (isOnAHazard2()||isLeftOfAHazard2()||isRightOfAHazard2()||isUnderAHazard2()){
 if (isOnATuna2()||isLeftOfATuna2()||isRightOfATuna2()||isUnderATuna2()){
  CAT.Player2.tunaCount+=1;
 }
+if (CONTROLS.player2.instaDeath){
+  becomeCorpse();
+}
 }
 function handleCatAnimation() {
 

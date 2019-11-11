@@ -36,7 +36,12 @@ function initializeCat(){
   }
   };
 }
-
+function becomeCorpse(){
+  CAT.Player2.v=0;
+  addPlatform(CAT.Player2.x,CAT.Player2.y,CAT.Player2.size,CAT.Player2.size);
+  CONTROLS.cat.instaDeath=false;
+  CAT.Player2.lifeCount-=1;
+}
 function isOnAPlatform() {
   var b = -100;
   for (const plat of PLATFORMS) {
