@@ -1,7 +1,58 @@
 //this just lets the cat have a picture. dont touch
 var catImage = new Image();
+var ghostCat = new Image();
 
+function handleCat2Animation(){
+ghostCat.src="ghostcat.jpg";
+if (CONTROLS.player2.up && isOnAPlatform2()!=-100&&!CONTROLS.player2.down) {
+  CAT.Player2.v = -6.5; //changing this value will affect how high the cat jumps
+}
 
+if (CONTROLS.player2.down&&!CONTROLS.player2.up) {
+  CAT.Player2.y += 2 * Math.abs(CAT.Player2.v); //makes the cat fast fall if you're holding down
+} else {
+  CAT.Player2.y += CAT.Player2.v; //makes the cat normal fall otherwise
+}
+
+if (CONTROLS.player2.left && !isRightOfAPlatform2()) {
+  CAT.Player2.x -= 4;//cat moves left
+}
+if (CONTROLS.player2.right && !isLeftOfAPlatform2()) {
+  CAT.Player2.x += 4;//cat moves right
+}
+
+// Check if cat is leaving the boundary, if so, dont let it
+if (CAT.Player2.x < 0) {
+  CAT.Player2.x = 0;
+} else if (CAT.Player2.x + CAT.Player2.size > GAME.canvas.width) {
+  CAT.Player2.x = 575;
+} else if (CAT.Player2.y < 0) {
+  //CAT.Player1.y = 0; if you uncomment this out, the cat will no longer be able to jump above the screen. currently its commented out cuz we like letting the cat jump above the screen
+} else if (CAT.Player2.y + CAT.Player2.size > GAME.canvas.height) {
+  CAT.Player2.y = GAME.canvas.height-CAT.Player2.size;
+  CAT.Player2.v = 0;
+}
+//}
+
+//Stop the cat if it is on a platform
+if (isOnAPlatform2()!=-100){
+    CAT.Player2.y = isOnAPlatform2() - CAT.Player2.size;
+    CAT.Player2.v = 0;
+  }
+else if (isUnderAPlatform2()!=-100){ //stops the cat if it hits the bottom of a platform
+  CAT.Player2.y =isUnderAPlatform2();
+  CAT.Player2.v=CAT.Player2.a;
+}
+else {
+  CAT.Player2.v+=CAT.Player2.a; //applies gravity
+}
+if (isOnAHazard2()||isLeftOfAHazard2()||isRightOfAHazard2()||isUnderAHazard2()){
+ killCat2();
+}
+if (isOnATuna2()||isLeftOfATuna2()||isRightOfATuna2()||isUnderATuna2()){
+ CAT.Player2.tunaCount+=1;
+}
+}
 function handleCatAnimation() {
 
 //this is the part that change's the cat's picture based on which life it's on. note that there's currently no way to change which life the cat is on, except by typing CAT.Player1.lifeCount-- in the inspect element console
@@ -93,7 +144,9 @@ function handleCatAnimation() {
 function RenderCat(context) { //draws the cat to the screen
   context.drawImage(catImage, CAT.Player1.x, CAT.Player1.y, CAT.Player1.size, CAT.Player1.size);
 }
-
+function RenderCat2(context){
+  context.drawImage(ghostCat,CAT.Player2.x,CAT.Player2.y, CAT.Player2.size, CAT.Player2.size);
+}
 function RenderHazards(context){
 var hazard=new Image();
 hazard.src = "lava.jpg";
@@ -127,12 +180,14 @@ function runGame() { //the basic game-running loop. handle with caution
     if (CONTROLS.cat.instaDeath){
       killCat();
     }
+    handleCat2Animation();
 
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 600, 300);
 
     // 3 - Draw the stuff to the screen
     RenderCat(context);
+    RenderCat2(context);
     RenderPlatforms(context);
     RenderHazards(context);
     RenderTuna(context);

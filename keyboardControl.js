@@ -53,6 +53,18 @@ document.addEventListener('keydown', function(event) {
         case "R":
         CONTROLS.cat.instaDeath = true;
         break;
+        case "ArrowLeft":
+        CONTROLS.player2.left=true;
+        break;
+        case "ArrowRight":
+        CONTROLS.player2.right=true;
+        break;
+        case "ArrowUp":
+        CONTROLS.player2.up=true;
+        break;
+        case "ArrowDown":
+        CONTROLS.player2.down=true;
+        break;
     default:
       break;
   }
@@ -90,8 +102,22 @@ document.addEventListener('keyup', function(event) {
         break;
         case "r":
         CONTROLS.cat.instaDeath = false;
+        break;
         case "R":
         CONTROLS.cat.instaDeath = false;
+        break;
+        case "ArrowLeft":
+        CONTROLS.player2.left=false;
+        break;
+        case "ArrowRight":
+        CONTROLS.player2.right=false;
+        break;
+        case "ArrowUp":
+        CONTROLS.player2.up=false;
+        break;
+        case "ArrowDown":
+        CONTROLS.player2.down=false;
+        break;
     default:
       break;
   }

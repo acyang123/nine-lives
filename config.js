@@ -17,9 +17,9 @@ var CAT = {
   spawnX: 50,
   spawnY: 0,
   v: 0,
-  a: 15,
+  a: .25,
   size: 25,
-  lifeCount: 1,
+  lifeCount: 9,
   name: "Tuesday McDoom"
 },
 Player2:{
@@ -28,10 +28,10 @@ y: 50,
 spawnX: 50,
 spawnY: 0,
 v: 0,
-a: 15,
+a: .25,
 size: 25,
 lifeCount: 1,
-name: "Tuesday McDoom"
+name: "Monday McDoom"
 }
 };
 
