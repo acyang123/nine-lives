@@ -66,6 +66,9 @@ document.addEventListener('keydown', function(event) {
         case "ArrowDown":
         CONTROLS.player2.down=true;
         break;
+        case "Shift":
+        CONTROLS.player2.instaDeath=true;
+        break;
         case "Alt":
         CONTROLS.player2.instaDeath=true;
         break;
@@ -121,6 +124,9 @@ document.addEventListener('keyup', function(event) {
         break;
         case "ArrowDown":
         CONTROLS.player2.down=false;
+        break;
+        case "Shift":
+        CONTROLS.player2.instaDeath=false;
         break;
         case "Alt":
         CONTROLS.player2.instaDeath=false;
