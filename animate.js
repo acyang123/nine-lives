@@ -152,13 +152,13 @@ function RenderCat2(context){
 }
 function RenderHazards(context){
 var hazard=new Image();
-hazard.src = "lava.jpg";
+hazard.src = "hazard.png";
   for (const haz of HAZARDS)
     context.drawImage(hazard,haz.xpt, haz.ypt, haz.xl, haz.yl);
 }
 function RenderTuna(context){
   var tuna1 = new Image();
-  tuna1.src= " tuna.jpeg"
+  tuna1.src= " tuna.png"
   for (const tuna of TUNA){
       if (!tuna.collected){
       context.drawImage(tuna1,tuna.xpt,tuna.ypt,tuna.xl,tuna.yl);
@@ -167,9 +167,10 @@ function RenderTuna(context){
 }
 
 function RenderPlatforms(context) { //draws every platform in PLATFORMS onnto the screen
-  context.fillStyle = "#000000";
+  var platform = new Image();
+  platform.src = "dirt.png"
   for (const plat of PLATFORMS)
-    context.fillRect(plat.xpt, plat.ypt, plat.xl, plat.yl); //you can replace this with .drawImage once you have pictures for the platforms
+    context.drawImage(platform,plat.xpt, plat.ypt, plat.xl, plat.yl); //you can replace this with .drawImage once you have pictures for the platforms
 }
 
 function runGame() { //the basic game-running loop. handle with caution

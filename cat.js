@@ -40,7 +40,7 @@ function becomeCorpse(){
   CAT.Player2.v=0;
   addPlatform(CAT.Player2.x,CAT.Player2.y,CAT.Player2.size,CAT.Player2.size);
   CONTROLS.cat.instaDeath=false;
-  CAT.Player2.lifeCount-=1;
+  CAT.Player2.lifeCount==-1;
 }
 function isOnAPlatform() {
   var b = -100;
@@ -180,8 +180,8 @@ CAT.Player1.y=50
 CAT.Player1.v=0;
 }
 function killCat2(){
-  CAT.Player2.x=50;
-  CAT.Player2.y=50
+  CAT.Player2.x=CAT.Player1.x;
+  CAT.Player2.y=CAT.Player1.y;
   CAT.Player2.v=0;
 }
 function isOnAHazard() {
