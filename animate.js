@@ -15,10 +15,10 @@ if (CONTROLS.player2.down&&!CONTROLS.player2.up) {
 }
 
 if (CONTROLS.player2.left && !isRightOfAPlatform2()) {
-  CAT.Player2.x -= 4;//cat moves left
+  CAT.Player2.x -= CAT.Player2.xvel;//cat moves left
 }
 if (CONTROLS.player2.right && !isLeftOfAPlatform2()) {
-  CAT.Player2.x += 4;//cat moves right
+  CAT.Player2.x += CAT.Player2.xvel;//cat moves right
 }
 
 // Check if cat is leaving the boundary, if so, dont let it
@@ -170,10 +170,10 @@ function RenderTuna(context){
 }
 
 function RenderPlatforms(context) { //draws every platform in PLATFORMS onnto the screen
-  var platform = new Image();
-  platform.src = "dirt.png"
+var platforms = new Image();
+platforms.src = "dirt.png";
   for (const plat of PLATFORMS)
-    context.drawImage(platform,plat.xpt, plat.ypt, plat.xl, plat.yl); //you can replace this with .drawImage once you have pictures for the platforms
+    context.drawImage(platforms,plat.xpt, plat.ypt, plat.xl, plat.yl); //you can replace this with .drawImage once you have pictures for the platforms
 }
 
 function runGame() { //the basic game-running loop. handle with caution

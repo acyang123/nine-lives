@@ -29,6 +29,7 @@ spawnX: 50,
 spawnY: 0,
 v: 0,
 a: .25,
+xvel:4,
 size: 25,
 lifeCount: 1,
 name: "Monday McDoom"

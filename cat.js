@@ -32,6 +32,7 @@ function initializeCat(){
   a: .25,
   size: 25,
   lifeCount: 1,
+  xvel: 4,
   name: "Monday McDoom"
   }
   };
@@ -40,9 +41,9 @@ function becomeCorpse(){
   CAT.Player2.v=0;
   addPlatform(CAT.Player2.x,CAT.Player2.y,CAT.Player2.size,CAT.Player2.size);
   addTempPlatform(CAT.Player2.x,CAT.Player2.y,CAT.Player2.size,CAT.Player2.size);
+  CAT.Player2.xvel=0;
   CONTROLS.cat.instaDeath=false;
   CAT.Player2.lifeCount==-1;
-  removeTempPlatforms();
 }
 function isOnAPlatform() {
   var b = -100;

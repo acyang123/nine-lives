@@ -69,9 +69,6 @@ document.addEventListener('keydown', function(event) {
         case "Shift":
         CONTROLS.player2.instaDeath=true;
         break;
-        case "Alt":
-        CONTROLS.player2.instaDeath=true;
-        break;
     default:
       break;
   }
@@ -127,9 +124,8 @@ document.addEventListener('keyup', function(event) {
         break;
         case "Shift":
         CONTROLS.player2.instaDeath=false;
-        break;
-        case "Alt":
-        CONTROLS.player2.instaDeath=false;
+          removeTempPlatforms();
+          CAT.Player2.xvel=4;
         break;
     default:
       break;
