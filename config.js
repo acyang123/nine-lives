@@ -49,3 +49,7 @@ var HAZARDS = [
 var TUNA = [
   {xpt:400, ypt:50, xl:25, yl: 25, collected: false}
 ]
+
+var TEMPPLATFORMS = [
+  {xpt: 0, ypt: 0, xl: 0, yl: 0}
+];
