@@ -39,8 +39,10 @@ function initializeCat(){
 function becomeCorpse(){
   CAT.Player2.v=0;
   addPlatform(CAT.Player2.x,CAT.Player2.y,CAT.Player2.size,CAT.Player2.size);
+  addTempPlatform(CAT.Player2.x,CAT.Player2.y,CAT.Player2.size,CAT.Player2.size);
   CONTROLS.cat.instaDeath=false;
   CAT.Player2.lifeCount==-1;
+  removeTempPlatforms();
 }
 function isOnAPlatform() {
   var b = -100;
@@ -163,6 +165,21 @@ function isLeftOfAHazard2() {  //detects if cat is directly to the left of a pla
 //this function adds a platform with its top left corner at (x,y), a width of w, and a length of l
 function addPlatform(x, y, w, l){
   PLATFORMS.push({xpt: x, ypt: y, xl: w, yl: l});
+}
+
+function addTempPlatform(x, y, w, l){
+  TEMPPLATFORMS.push({xpt: x, ypt: y, xl: w, yl: l});
+}
+
+
+function removeTempPlatforms(){
+  PLATFORMS = PLATFORMS.filter(function(objFromA) {
+  return !TEMPPLATFORMS.find(function(objFromB) {
+    return objFromA.xpt === objFromB.xpt && objFromA.ypt === objFromB.ypt && objFromA.xl === objFromB.xl && objFromA.yl === objFromB.yl
+  })
+})
+console.log(PLATFORMS)
+
 }
 
 //this function CLEARS the level of all platforms, but keeps the floor. If there was some sort of levelCount, I'd put it in here.

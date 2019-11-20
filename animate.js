@@ -48,13 +48,16 @@ else {
 }
 if (isOnAHazard2()||isLeftOfAHazard2()||isRightOfAHazard2()||isUnderAHazard2()){
  killCat2();
+
 }
 if (isOnATuna2()||isLeftOfATuna2()||isRightOfATuna2()||isUnderATuna2()){
  CAT.Player2.tunaCount+=1;
 }
 if (CONTROLS.player2.instaDeath){
   becomeCorpse();
+
 }
+
 }
 function handleCatAnimation() {
 
@@ -182,7 +185,9 @@ function runGame() { //the basic game-running loop. handle with caution
     // 1 - Reposition the cat
     handleCatAnimation();
     if (CONTROLS.cat.instaDeath){
+
       killCat();
+
     }
     handleCat2Animation();
 
