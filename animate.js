@@ -64,34 +64,34 @@ function handleCatAnimation() {
 //this is the part that change's the cat's picture based on which life it's on. note that there's currently no way to change which life the cat is on, except by typing CAT.Player1.lifeCount-- in the inspect element console
   switch (CAT.Player1.lifeCount) {
     case 9:
-      catImage.src = "Cat pics/black cat.jpg";
+      catImage.src = "Cat pics/CatBlack.png";
       break;
     case 8:
-      catImage.src = "Cat pics/gray cat.jpg";
+      catImage.src = "Cat pics/CatBlue.png";
       break;
     case 7:
-      catImage.src = "Cat pics/pink cat.jpg";
+      catImage.src = "Cat pics/CatGray.png";
       break;
     case 6:
-      catImage.src = "Cat pics/magenta cat.jpg";
+      catImage.src = "Cat pics/CatGreen.png";
       break;
     case 5:
-      catImage.src = "Cat pics/blue cat.jpg";
+      catImage.src = "Cat pics/CatOrange.png";
       break;
     case 4:
-      catImage.src = "Cat pics/green cat.jpg";
+      catImage.src = "Cat pics/CatPink.png";
       break;
     case 3:
-      catImage.src = "Cat pics/yellow cat.jpg";
+      catImage.src = "Cat pics/CatPurple.png";
       break;
     case 2:
-      catImage.src = "Cat pics/orange cat.jpg";
+      catImage.src = "Cat pics/CatRed.png";
       break;
     case 1:
-      catImage.src = "Cat pics/red cat.jpg";
+      catImage.src = "Cat pics/CatYellow.png";
       break;
     default:
-      catImage.src = "Cat pics/black cat.jpg";
+      catImage.src = "Cat pics/CatBlakc.png";
       break;
   }
 
