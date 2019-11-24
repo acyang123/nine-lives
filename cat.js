@@ -48,7 +48,7 @@ function becomeCorpse(){
 function isOnAPlatform() {
   var b = -100;
   for (const plat of PLATFORMS) {
-    if (CAT.Player1.x +CAT.Player1.size > plat.xpt && CAT.Player1.x < plat.xpt + plat.xl && CAT.Player1.y + CAT.Player1.size >= plat.ypt && CAT.Player1.y + CAT.Player1.size <= plat.ypt + 10) {
+    if (CAT.Player1.x +CAT.Player1.size > plat.xpt+5 && CAT.Player1.x < plat.xpt + plat.xl-5 && CAT.Player1.y + CAT.Player1.size >= plat.ypt && CAT.Player1.y + CAT.Player1.size <= plat.ypt + 10) {
       b = plat.ypt;
     }
   }
@@ -58,7 +58,7 @@ function isOnAPlatform() {
 function isUnderAPlatform() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = -100;
   for (const plat of PLATFORMS) {
-    if (CAT.Player1.x +CAT.Player1.size > plat.xpt && CAT.Player1.x < plat.xpt + plat.xl && CAT.Player1.y >= plat.ypt +plat.yl -10 && CAT.Player1.y <= plat.ypt +plat.yl) {
+    if (CAT.Player1.x +CAT.Player1.size > plat.xpt +5&& CAT.Player1.x < plat.xpt + plat.xl -5&& CAT.Player1.y >= plat.ypt +plat.yl -10 && CAT.Player1.y <= plat.ypt +plat.yl) {
       b = plat.ypt + plat.yl;
     }
   }
@@ -88,7 +88,7 @@ function isLeftOfAPlatform() {  //detects if cat is directly to the left of a pl
 function isOnAPlatform2() {
   var b = -100;
   for (const plat of PLATFORMS) {
-    if (CAT.Player2.x +CAT.Player2.size > plat.xpt && CAT.Player2.x < plat.xpt + plat.xl && CAT.Player2.y + CAT.Player2.size >= plat.ypt && CAT.Player2.y + CAT.Player2.size <= plat.ypt + 10) {
+    if (CAT.Player2.x +CAT.Player2.size > plat.xpt +5&& CAT.Player2.x < plat.xpt + plat.xl -5&& CAT.Player2.y + CAT.Player2.size >= plat.ypt && CAT.Player2.y + CAT.Player2.size <= plat.ypt + 10) {
       b = plat.ypt;
     }
   }
@@ -98,7 +98,7 @@ function isOnAPlatform2() {
 function isUnderAPlatform2() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = -100;
   for (const plat of PLATFORMS) {
-    if (CAT.Player2.x +CAT.Player2.size > plat.xpt && CAT.Player2.x < plat.xpt + plat.xl && CAT.Player2.y >= plat.ypt +plat.yl -10 && CAT.Player2.y <= plat.ypt +plat.yl) {
+    if (CAT.Player2.x +CAT.Player2.size > plat.xpt+5 && CAT.Player2.x < plat.xpt + plat.xl-5 && CAT.Player2.y >= plat.ypt +plat.yl -10 && CAT.Player2.y <= plat.ypt +plat.yl) {
       b = plat.ypt + plat.yl;
     }
   }
