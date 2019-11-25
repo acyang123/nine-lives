@@ -193,7 +193,6 @@ function runGame() { //the basic game-running loop. handle with caution
   var context = canvas.getContext('2d');
 if (GAME.level>=GAME.levelmax){
   window.location.href = "http://gamer.sex";
-  GAME.level=0;
 }else if (GAME.level>-1) { //when the player loses, GAME.started should be set to FALSE
     GAME.movement+=1;
     HAZARDS[2][1].xpt=25*(GAME.movement/5);
@@ -226,9 +225,12 @@ if (GAME.level>=GAME.levelmax){
     RenderEnd(context);
   } else {
     document.getElementById("b").onmouseover = function() {
+      if (GAME.level==-1){
       GAME.level=0;
-      CAT.Player2.on=true;};
+      CAT.Player2.on=true;}
+    }
       document.getElementById("a").onmouseover = function() {
+        if (GAME.level==-1){
         GAME.level=0;
         var ran = parseInt(Math.random()*10);
         if (ran==0){
@@ -236,6 +238,7 @@ if (GAME.level>=GAME.levelmax){
           CAT.Player1.lifeCount=0;
         }
       };
+    }
         context.font = "30px Arial";
         context.fillText("Nine Lives", 220, 150);
       }

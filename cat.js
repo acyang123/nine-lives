@@ -8,7 +8,7 @@ function initializeCat(){
       height : 300
     },
     started : true,
-    level : 2,
+    level : -1,
     levelmax:3,
     movement:120
   }
