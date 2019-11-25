@@ -67,6 +67,9 @@ function handleCat2Animation(){
 function handleCatAnimation() {
   var spritename = "Cat pics/CatLife"
   spritename+=CAT.Player1.lifeCount
+  if (!CAT.Player1.isDOG&&CAT.Player1.lifeCount==0){
+    spritename="Cat pics/CatLife1"
+  }
   if (CAT.Player1.direction==1){
     spritename+="Left";
   }else{
