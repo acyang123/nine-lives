@@ -195,7 +195,13 @@ if (GAME.level>=GAME.levelmax){
   window.location.href = "http://gamer.sex";
   GAME.level=0;
 }else if (GAME.level>-1) { //when the player loses, GAME.started should be set to FALSE
+    GAME.movement+=1;
+    HAZARDS[2][1].xpt=25*(GAME.movement/5);
+    HAZARDS[2][2].xpt=25*(GAME.movement/5)+75;
 
+    if(GAME.movement>115){
+      GAME.movement=60;
+    }
     // 1 - Reposition the cat
     handleCatAnimation();
     if (CONTROLS.cat.instaDeath){
