@@ -14,6 +14,7 @@ var GAME = {
 var CAT = {
   direction: 0,
   tunaCount: 0,
+  maxTuna: 7,
   Player1:{
   x : 50,
   y: 50,
@@ -161,14 +162,14 @@ var HAZARDS = [[
 var TUNA = [[
   {xpt:400, ypt:50, xl:25, yl: 25, collected: false}
 ],
-[{xpt:0,ypt:150,xl:25,yl:25},
-{xpt:300, ypt:100, xl:25, yl:25},
+[{xpt:0,ypt:150,xl:25,yl:25,collected: false},
+{xpt:300, ypt:100, xl:25, yl:25,collected: false},
 ],
 [
-  {xpt:75,ypt:0 , xl:25 , yl: 25},
-  {xpt:125,ypt:0 , xl:25 , yl: 25},
-  {xpt:325,ypt:125 , xl:25 , yl: 25},
-  {xpt:575,ypt:0 , xl:25 , yl: 25}
+  {xpt:75,ypt:0 , xl:25 , yl: 25,collected: false},
+  {xpt:125,ypt:0 , xl:25 , yl: 25,collected: false},
+  {xpt:325,ypt:125 , xl:25 , yl: 25,collected: false},
+  {xpt:575,ypt:0 , xl:25 , yl: 25,collected: false}
 ]
 ]
 

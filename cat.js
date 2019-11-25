@@ -14,6 +14,7 @@ function initializeCat(){
   }
   CAT = {
     tunaCount: 0,
+    maxTuna: 7,
     Player1:{
       jump:2,
       isDOG:false,

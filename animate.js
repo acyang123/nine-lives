@@ -56,7 +56,7 @@ function handleCat2Animation(){
 
   }
   if (isOnATuna2()||isLeftOfATuna2()||isRightOfATuna2()||isUnderATuna2()){
-    CAT.Player2.tunaCount+=1;
+    CAT.tunaCount+=1;
   }
   if (CONTROLS.player2.instaDeath){
     becomeCorpse();
@@ -134,7 +134,7 @@ if (isOnAPlatform()!=-100){
     killCat();
   }
   if (isOnATuna()||isLeftOfATuna()||isRightOfATuna()||isUnderATuna()){
-    CAT.Player1.tunaCount+=1;
+    CAT.tunaCount+=1;
   }
   if (isOnGoal()||isUnderGoal()||isLeftOfGoal()||isRightOfGoal()){
     CAT.Player1.direction=1;
@@ -192,7 +192,11 @@ function runGame() { //the basic game-running loop. handle with caution
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
 if (GAME.level>=GAME.levelmax){
-  window.location.href = "http://gamer.sex";
+  if (CAT.tunaCount==CAT.maxTuna){
+    window.location.href = "http://gamer.sex";
+  }else{
+    context.fillText("Go to gamer.sex", 220, 150);
+}
 }else if (GAME.level!=-1) { //when the player loses, GAME.started should be set to FALSE
     GAME.movement+=1;
     HAZARDS[2][1].xpt=25*(GAME.movement/5);
