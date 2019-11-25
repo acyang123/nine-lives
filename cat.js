@@ -13,6 +13,7 @@ function initializeCat(){
   CAT = {
     tunaCount: 0,
     Player1:{
+      direction: 1,
     x : 50,
     y: 50,
     spawnX: 50,
@@ -24,6 +25,7 @@ function initializeCat(){
     name: "Tuesday McDoom"
   },
   Player2:{
+    direction: 1,
   x : 50,
   y: 50,
   spawnX: 50,
@@ -47,8 +49,8 @@ function becomeCorpse(){
 }
 function isOnAPlatform() {
   var b = -100;
-  for (const plat of PLATFORMS) {
-    if (CAT.Player1.x +CAT.Player1.size > plat.xpt+5 && CAT.Player1.x < plat.xpt + plat.xl-5 && CAT.Player1.y + CAT.Player1.size >= plat.ypt && CAT.Player1.y + CAT.Player1.size <= plat.ypt + 10) {
+  for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+      var plat=PLATFORMS[GAME.level][i];     if (CAT.Player1.x +CAT.Player1.size > plat.xpt+5 && CAT.Player1.x < plat.xpt + plat.xl-5 && CAT.Player1.y + CAT.Player1.size >= plat.ypt && CAT.Player1.y + CAT.Player1.size <= plat.ypt + 10) {
       b = plat.ypt;
     }
   }
@@ -57,8 +59,8 @@ function isOnAPlatform() {
 
 function isUnderAPlatform() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = -100;
-  for (const plat of PLATFORMS) {
-    if (CAT.Player1.x +CAT.Player1.size > plat.xpt +5&& CAT.Player1.x < plat.xpt + plat.xl -5&& CAT.Player1.y >= plat.ypt +plat.yl -10 && CAT.Player1.y <= plat.ypt +plat.yl) {
+  for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+      var plat=PLATFORMS[GAME.level][i];     if (CAT.Player1.x +CAT.Player1.size > plat.xpt +5&& CAT.Player1.x < plat.xpt + plat.xl -5&& CAT.Player1.y >= plat.ypt +plat.yl -10 && CAT.Player1.y <= plat.ypt +plat.yl) {
       b = plat.ypt + plat.yl;
     }
   }
@@ -67,8 +69,8 @@ function isUnderAPlatform() {//detects if the cat is under a platform, returns t
 
 function isRightOfAPlatform() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const plat of PLATFORMS) {
-    if (CAT.Player1.x > plat.xpt +plat.xl -10 && CAT.Player1.x <= plat.xpt + plat.xl && CAT.Player1.y + CAT.Player1.size > plat.ypt && CAT.Player1.y  < plat.ypt + plat.yl) {
+  for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+      var plat=PLATFORMS[GAME.level][i];     if (CAT.Player1.x > plat.xpt +plat.xl -10 && CAT.Player1.x <= plat.xpt + plat.xl && CAT.Player1.y + CAT.Player1.size > plat.ypt && CAT.Player1.y  < plat.ypt + plat.yl) {
       b = true;
     };
   }
@@ -77,8 +79,8 @@ function isRightOfAPlatform() { //detects if cat is directly to the right of a p
 
 function isLeftOfAPlatform() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const plat of PLATFORMS) {
-    if (CAT.Player1.x +CAT.Player1.size >= plat.xpt && CAT.Player1.x +CAT.Player1.size <= plat.xpt +10  && CAT.Player1.y +CAT.Player1.size> plat.ypt && CAT.Player1.y  < plat.ypt + plat.yl) {
+  for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+      var plat=PLATFORMS[GAME.level][i];     if (CAT.Player1.x +CAT.Player1.size >= plat.xpt && CAT.Player1.x +CAT.Player1.size <= plat.xpt +10  && CAT.Player1.y +CAT.Player1.size> plat.ypt && CAT.Player1.y  < plat.ypt + plat.yl) {
       b = true;
     };
   }
@@ -87,8 +89,8 @@ function isLeftOfAPlatform() {  //detects if cat is directly to the left of a pl
 
 function isOnAPlatform2() {
   var b = -100;
-  for (const plat of PLATFORMS) {
-    if (CAT.Player2.x +CAT.Player2.size > plat.xpt +5&& CAT.Player2.x < plat.xpt + plat.xl -5&& CAT.Player2.y + CAT.Player2.size >= plat.ypt && CAT.Player2.y + CAT.Player2.size <= plat.ypt + 10) {
+  for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+      var plat=PLATFORMS[GAME.level][i];     if (CAT.Player2.x +CAT.Player2.size > plat.xpt +5&& CAT.Player2.x < plat.xpt + plat.xl -5&& CAT.Player2.y + CAT.Player2.size >= plat.ypt && CAT.Player2.y + CAT.Player2.size <= plat.ypt + 10) {
       b = plat.ypt;
     }
   }
@@ -97,8 +99,8 @@ function isOnAPlatform2() {
 
 function isUnderAPlatform2() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = -100;
-  for (const plat of PLATFORMS) {
-    if (CAT.Player2.x +CAT.Player2.size > plat.xpt+5 && CAT.Player2.x < plat.xpt + plat.xl-5 && CAT.Player2.y >= plat.ypt +plat.yl -10 && CAT.Player2.y <= plat.ypt +plat.yl) {
+  for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+      var plat=PLATFORMS[GAME.level][i];     if (CAT.Player2.x +CAT.Player2.size > plat.xpt+5 && CAT.Player2.x < plat.xpt + plat.xl-5 && CAT.Player2.y >= plat.ypt +plat.yl -10 && CAT.Player2.y <= plat.ypt +plat.yl) {
       b = plat.ypt + plat.yl;
     }
   }
@@ -107,8 +109,8 @@ function isUnderAPlatform2() {//detects if the cat is under a platform, returns 
 
 function isRightOfAPlatform2() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const plat of PLATFORMS) {
-    if (CAT.Player2.x > plat.xpt +plat.xl -10 && CAT.Player2.x <= plat.xpt + plat.xl && CAT.Player2.y + CAT.Player2.size > plat.ypt && CAT.Player2.y  < plat.ypt + plat.yl) {
+  for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+      var plat=PLATFORMS[GAME.level][i];     if (CAT.Player2.x > plat.xpt +plat.xl -10 && CAT.Player2.x <= plat.xpt + plat.xl && CAT.Player2.y + CAT.Player2.size > plat.ypt && CAT.Player2.y  < plat.ypt + plat.yl) {
       b = true;
     };
   }
@@ -117,8 +119,8 @@ function isRightOfAPlatform2() { //detects if cat is directly to the right of a 
 
 function isLeftOfAPlatform2() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const plat of PLATFORMS) {
-    if (CAT.Player2.x +CAT.Player2.size >= plat.xpt && CAT.Player2.x +CAT.Player2.size <= plat.xpt +10  && CAT.Player2.y +CAT.Player2.size> plat.ypt && CAT.Player2.y  < plat.ypt + plat.yl) {
+  for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+      var plat=PLATFORMS[GAME.level][i];     if (CAT.Player2.x +CAT.Player2.size >= plat.xpt && CAT.Player2.x +CAT.Player2.size <= plat.xpt +10  && CAT.Player2.y +CAT.Player2.size> plat.ypt && CAT.Player2.y  < plat.ypt + plat.yl) {
       b = true;
     };
   }
@@ -126,8 +128,8 @@ function isLeftOfAPlatform2() {  //detects if cat is directly to the left of a p
 }
 function isOnAHazard2() {
   var b = false;
-  for (const haz of HAZARDS) {
-    if (CAT.Player2.x +CAT.Player2.size > haz.xpt && CAT.Player2.x < haz.xpt + haz.xl && CAT.Player2.y + CAT.Player2.size >= haz.ypt && CAT.Player2.y + CAT.Player2.size <= haz.ypt + 10) {
+  for (var i=0;i<HAZARDS[GAME.level].length;i++){
+      var haz=HAZARDS[GAME.level][i];    if (CAT.Player2.x +CAT.Player2.size > haz.xpt && CAT.Player2.x < haz.xpt + haz.xl && CAT.Player2.y + CAT.Player2.size >= haz.ypt && CAT.Player2.y + CAT.Player2.size <= haz.ypt + 10) {
       b = true;
     }
   }
@@ -136,8 +138,8 @@ function isOnAHazard2() {
 
 function isUnderAHazard2() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = false;
-  for (const haz of HAZARDS) {
-    if (CAT.Player2.x +CAT.Player2.size > haz.xpt && CAT.Player2.x < haz.xpt + haz.xl && CAT.Player2.y >= haz.ypt +haz.yl -10 && CAT.Player2.y <= haz.ypt +haz.yl) {
+  for (var i=0;i<HAZARDS[GAME.level].length;i++){
+      var haz=HAZARDS[GAME.level][i];    if (CAT.Player2.x +CAT.Player2.size > haz.xpt && CAT.Player2.x < haz.xpt + haz.xl && CAT.Player2.y >= haz.ypt +haz.yl -10 && CAT.Player2.y <= haz.ypt +haz.yl) {
       b = true;
     }
   }
@@ -146,8 +148,8 @@ function isUnderAHazard2() {//detects if the cat is under a platform, returns th
 
 function isRightOfAHazard2() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const haz of HAZARDS) {
-    if (CAT.Player2.x > haz.xpt +haz.xl -10 && CAT.Player2.x <= haz.xpt + haz.xl && CAT.Player2.y + CAT.Player2.size > haz.ypt && CAT.Player2.y  < haz.ypt + haz.yl) {
+  for (var i=0;i<HAZARDS[GAME.level].length;i++){
+      var haz=HAZARDS[GAME.level][i];    if (CAT.Player2.x > haz.xpt +haz.xl -10 && CAT.Player2.x <= haz.xpt + haz.xl && CAT.Player2.y + CAT.Player2.size > haz.ypt && CAT.Player2.y  < haz.ypt + haz.yl) {
       b = true;
     };
   }
@@ -156,8 +158,8 @@ function isRightOfAHazard2() { //detects if cat is directly to the right of a pl
 
 function isLeftOfAHazard2() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const haz of HAZARDS) {
-    if (CAT.Player2.x +CAT.Player2.size >= haz.xpt && CAT.Player2.x +CAT.Player2.size <= haz.xpt +10  && CAT.Player2.y +CAT.Player2.size> haz.ypt && CAT.Player2.y  < haz.ypt + haz.yl) {
+  for (var i=0;i<HAZARDS[GAME.level].length;i++){
+      var haz=HAZARDS[GAME.level][i];    if (CAT.Player2.x +CAT.Player2.size >= haz.xpt && CAT.Player2.x +CAT.Player2.size <= haz.xpt +10  && CAT.Player2.y +CAT.Player2.size> haz.ypt && CAT.Player2.y  < haz.ypt + haz.yl) {
       b = true;
     };
   }
@@ -165,28 +167,25 @@ function isLeftOfAHazard2() {  //detects if cat is directly to the left of a pla
 }
 //this function adds a platform with its top left corner at (x,y), a width of w, and a length of l
 function addPlatform(x, y, w, l){
-  PLATFORMS.push({xpt: x, ypt: y, xl: w, yl: l});
+  PLATFORMS[GAME.level].push({xpt: x, ypt: y, xl: w, yl: l});
 }
 
 function addTempPlatform(x, y, w, l){
-  TEMPPLATFORMS.push({xpt: x, ypt: y, xl: w, yl: l});
+  TEMPPLATFORMS .push({xpt: x, ypt: y, xl: w, yl: l});
 }
 
 
-function removeTempPlatforms(){
-  PLATFORMS = PLATFORMS.filter(function(objFromA) {
-  return !TEMPPLATFORMS.find(function(objFromB) {
+function removeTempPLATFORMS (){
+  PLATFORMS[GAME.level] = PLATFORMS[GAME.level] .filter(function(objFromA) {
+  return !TEMPPLATFORMS .find(function(objFromB) {
     return objFromA.xpt === objFromB.xpt && objFromA.ypt === objFromB.ypt && objFromA.xl === objFromB.xl && objFromA.yl === objFromB.yl
   })
 })
-console.log(PLATFORMS)
+//console.log(PLATFORMS )
 
 }
 
-//this function CLEARS the level of all platforms, but keeps the floor. If there was some sort of levelCount, I'd put it in here.
-function newLevel(){
-  PLATFORMS= [{xpt: 0,   ypt:300,  xl: 600, yl: 200}];
-}
+//this function CLEARS the level of all PLATFORMS , but keeps the floor. If there was some sort of levelCount, I'd put it in here.
 function killCat(){
 if(CAT.Player1.lifeCount>1){
   addPlatform(CAT.Player1.x,CAT.Player1.y,CAT.Player1.size,CAT.Player1.size);
@@ -204,8 +203,8 @@ function killCat2(){
 }
 function isOnAHazard() {
   var b = false;
-  for (const haz of HAZARDS) {
-    if (CAT.Player1.x +CAT.Player1.size > haz.xpt && CAT.Player1.x < haz.xpt + haz.xl && CAT.Player1.y + CAT.Player1.size >= haz.ypt && CAT.Player1.y + CAT.Player1.size <= haz.ypt + 10) {
+  for (var i=0;i<HAZARDS[GAME.level].length;i++){
+      var haz=HAZARDS[GAME.level][i];    if (CAT.Player1.x +CAT.Player1.size > haz.xpt && CAT.Player1.x < haz.xpt + haz.xl && CAT.Player1.y + CAT.Player1.size >= haz.ypt && CAT.Player1.y + CAT.Player1.size <= haz.ypt + 10) {
       b = true;
     }
   }
@@ -214,8 +213,8 @@ function isOnAHazard() {
 
 function isUnderAHazard() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = false;
-  for (const haz of HAZARDS) {
-    if (CAT.Player1.x +CAT.Player1.size > haz.xpt && CAT.Player1.x < haz.xpt + haz.xl && CAT.Player1.y >= haz.ypt +haz.yl -10 && CAT.Player1.y <= haz.ypt +haz.yl) {
+  for (var i=0;i<HAZARDS[GAME.level].length;i++){
+      var haz=HAZARDS[GAME.level][i];    if (CAT.Player1.x +CAT.Player1.size > haz.xpt && CAT.Player1.x < haz.xpt + haz.xl && CAT.Player1.y >= haz.ypt +haz.yl -10 && CAT.Player1.y <= haz.ypt +haz.yl) {
       b = true;
     }
   }
@@ -224,8 +223,8 @@ function isUnderAHazard() {//detects if the cat is under a platform, returns the
 
 function isRightOfAHazard() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const haz of HAZARDS) {
-    if (CAT.Player1.x > haz.xpt +haz.xl -10 && CAT.Player1.x <= haz.xpt + haz.xl && CAT.Player1.y + CAT.Player1.size > haz.ypt && CAT.Player1.y  < haz.ypt + haz.yl) {
+  for (var i=0;i<HAZARDS[GAME.level].length;i++){
+      var haz=HAZARDS[GAME.level][i];    if (CAT.Player1.x > haz.xpt +haz.xl -10 && CAT.Player1.x <= haz.xpt + haz.xl && CAT.Player1.y + CAT.Player1.size > haz.ypt && CAT.Player1.y  < haz.ypt + haz.yl) {
       b = true;
     };
   }
@@ -234,8 +233,8 @@ function isRightOfAHazard() { //detects if cat is directly to the right of a pla
 
 function isLeftOfAHazard() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const haz of HAZARDS) {
-    if (CAT.Player1.x +CAT.Player1.size >= haz.xpt && CAT.Player1.x +CAT.Player1.size <= haz.xpt +10  && CAT.Player1.y +CAT.Player1.size> haz.ypt && CAT.Player1.y  < haz.ypt + haz.yl) {
+  for (var i=0;i<HAZARDS[GAME.level].length;i++){
+      var haz=HAZARDS[GAME.level][i];    if (CAT.Player1.x +CAT.Player1.size >= haz.xpt && CAT.Player1.x +CAT.Player1.size <= haz.xpt +10  && CAT.Player1.y +CAT.Player1.size> haz.ypt && CAT.Player1.y  < haz.ypt + haz.yl) {
       b = true;
     };
   }
@@ -249,7 +248,8 @@ function addHazard(x, y, w, l){
 }
 function isOnATuna() {
   var b = false;
-  for (const tuna of TUNA) {
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];
     if (!tuna.collected&&CAT.Player1.x +CAT.Player1.size > tuna.xpt && CAT.Player1.x < tuna.xpt + tuna.xl && CAT.Player1.y + CAT.Player1.size >= tuna.ypt && CAT.Player1.y + CAT.Player1.size <= tuna.ypt + 10) {
       b = true;
       tuna.collected=true;
@@ -260,8 +260,8 @@ function isOnATuna() {
 
 function isUnderATuna() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = false;
-  for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.Player1.x +CAT.Player1.size > tuna.xpt && CAT.Player1.x < tuna.xpt + tuna.xl && CAT.Player1.y >= tuna.ypt +tuna.yl -10 && CAT.Player1.y <= tuna.ypt +tuna.yl) {
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];    if (!tuna.collected&&CAT.Player1.x +CAT.Player1.size > tuna.xpt && CAT.Player1.x < tuna.xpt + tuna.xl && CAT.Player1.y >= tuna.ypt +tuna.yl -10 && CAT.Player1.y <= tuna.ypt +tuna.yl) {
       b = true;
       tuna.collected=true;
     }
@@ -271,8 +271,8 @@ function isUnderATuna() {//detects if the cat is under a platform, returns the B
 
 function isRightOfATuna() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.Player1.x > tuna.xpt +tuna.xl -10 && CAT.Player1.x <= tuna.xpt + tuna.xl && CAT.Player1.y + CAT.Player1.size > tuna.ypt && CAT.Player1.y  < tuna.ypt + tuna.yl) {
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];    if (!tuna.collected&&CAT.Player1.x > tuna.xpt +tuna.xl -10 && CAT.Player1.x <= tuna.xpt + tuna.xl && CAT.Player1.y + CAT.Player1.size > tuna.ypt && CAT.Player1.y  < tuna.ypt + tuna.yl) {
       b = true;
       tuna.collected=true;
     };
@@ -282,8 +282,8 @@ function isRightOfATuna() { //detects if cat is directly to the right of a platf
 
 function isLeftOfATuna() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.Player1.x +CAT.Player1.size >= tuna.xpt && CAT.Player1.x +CAT.Player1.size <= tuna.xpt +10  && CAT.Player1.y +CAT.Player1.size> tuna.ypt && CAT.Player1.y  < tuna.ypt + tuna.yl) {
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];    if (!tuna.collected&&CAT.Player1.x +CAT.Player1.size >= tuna.xpt && CAT.Player1.x +CAT.Player1.size <= tuna.xpt +10  && CAT.Player1.y +CAT.Player1.size> tuna.ypt && CAT.Player1.y  < tuna.ypt + tuna.yl) {
       b = true;
       tuna.collected=true;
     };
@@ -293,8 +293,8 @@ function isLeftOfATuna() {  //detects if cat is directly to the left of a platfo
 
 function isOnATuna2() {
   var b = false;
-  for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.Player2.x +CAT.Player2.size > tuna.xpt && CAT.Player2.x < tuna.xpt + tuna.xl && CAT.Player2.y + CAT.Player2.size >= tuna.ypt && CAT.Player2.y + CAT.Player2.size <= tuna.ypt + 10) {
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];    if (!tuna.collected&&CAT.Player2.x +CAT.Player2.size > tuna.xpt && CAT.Player2.x < tuna.xpt + tuna.xl && CAT.Player2.y + CAT.Player2.size >= tuna.ypt && CAT.Player2.y + CAT.Player2.size <= tuna.ypt + 10) {
       b = true;
       tuna.collected=true;
     }
@@ -304,8 +304,8 @@ function isOnATuna2() {
 
 function isUnderATuna2() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
   var b = false;
-  for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.Player2.x +CAT.Player2.size > tuna.xpt && CAT.Player2.x < tuna.xpt + tuna.xl && CAT.Player2.y >= tuna.ypt +tuna.yl -10 && CAT.Player2.y <= tuna.ypt +tuna.yl) {
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];    if (!tuna.collected&&CAT.Player2.x +CAT.Player2.size > tuna.xpt && CAT.Player2.x < tuna.xpt + tuna.xl && CAT.Player2.y >= tuna.ypt +tuna.yl -10 && CAT.Player2.y <= tuna.ypt +tuna.yl) {
       b = true;
       tuna.collected=true;
     }
@@ -315,8 +315,8 @@ function isUnderATuna2() {//detects if the cat is under a platform, returns the 
 
 function isRightOfATuna2() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.Player2.x > tuna.xpt +tuna.xl -10 && CAT.Player2.x <= tuna.xpt + tuna.xl && CAT.Player2.y + CAT.Player2.size > tuna.ypt && CAT.Player2.y  < tuna.ypt + tuna.yl) {
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];    if (!tuna.collected&&CAT.Player2.x > tuna.xpt +tuna.xl -10 && CAT.Player2.x <= tuna.xpt + tuna.xl && CAT.Player2.y + CAT.Player2.size > tuna.ypt && CAT.Player2.y  < tuna.ypt + tuna.yl) {
       b = true;
       tuna.collected=true;
     };
@@ -326,10 +326,49 @@ function isRightOfATuna2() { //detects if cat is directly to the right of a plat
 
 function isLeftOfATuna2() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
   var b = false;
-  for (const tuna of TUNA) {
-    if (!tuna.collected&&CAT.Player2.x +CAT.Player2.size >= tuna.xpt && CAT.Player2.x +CAT.Player2.size <= tuna.xpt +10  && CAT.Player2.y +CAT.Player2.size> tuna.ypt && CAT.Player2.y  < tuna.ypt + tuna.yl) {
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];    if (!tuna.collected&&CAT.Player2.x +CAT.Player2.size >= tuna.xpt && CAT.Player2.x +CAT.Player2.size <= tuna.xpt +10  && CAT.Player2.y +CAT.Player2.size> tuna.ypt && CAT.Player2.y  < tuna.ypt + tuna.yl) {
       b = true;
       tuna.collected=true;
+    };
+  }
+  return b;
+}
+function isOnGoal() {
+  var b = false;
+  for (var i=0;i<END[GAME.level].length;i++){
+      var haz=END[GAME.level][i];    if (CAT.Player1.x +CAT.Player1.size > haz.xpt && CAT.Player1.x < haz.xpt + haz.xl && CAT.Player1.y + CAT.Player1.size >= haz.ypt && CAT.Player1.y + CAT.Player1.size <= haz.ypt + 10) {
+      b = true;
+    }
+  }
+  return b;
+} //detects if the cat is on a platform, returns the PLATFORM's Y-POSITION if so, -100 otherwise
+
+function isUnderGoal() {//detects if the cat is under a platform, returns the BOTTOM OF PLATFORM's Y-POSITION if so, -100 otherwise
+  var b = false;
+  for (var i=0;i<END[GAME.level].length;i++){
+      var haz=END[GAME.level][i];    if (CAT.Player1.x +CAT.Player1.size > haz.xpt && CAT.Player1.x < haz.xpt + haz.xl && CAT.Player1.y >= haz.ypt +haz.yl -10 && CAT.Player1.y <= haz.ypt +haz.yl) {
+      b = true;
+    }
+  }
+  return b;
+}
+
+function isRightOfGoal() { //detects if cat is directly to the right of a platform, returns TRUE if so, false otherwise
+  var b = false;
+  for (var i=0;i<END[GAME.level].length;i++){
+      var haz=END[GAME.level][i];    if (CAT.Player1.x > haz.xpt +haz.xl -10 && CAT.Player1.x <= haz.xpt + haz.xl && CAT.Player1.y + CAT.Player1.size > haz.ypt && CAT.Player1.y  < haz.ypt + haz.yl) {
+      b = true;
+    };
+  }
+  return b;
+}
+
+function isLeftOfGoal() {  //detects if cat is directly to the left of a platform, returns TRUE if so, false otherwise
+  var b = false;
+  for (var i=0;i<END[GAME.level].length;i++){
+      var haz=END[GAME.level][i];    if (CAT.Player1.x +CAT.Player1.size >= haz.xpt && CAT.Player1.x +CAT.Player1.size <= haz.xpt +10  && CAT.Player1.y +CAT.Player1.size> haz.ypt && CAT.Player1.y  < haz.ypt + haz.yl) {
+      b = true;
     };
   }
   return b;

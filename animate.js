@@ -1,9 +1,12 @@
 //this just lets the cat have a picture. dont touch
 var catImage = new Image();
 var ghostCat = new Image();
-
+var home = new Image();
+function renderSpawn(context){
+  home.src="CatHouse.png";
+  context.drawImage(home,50,50,25,25);
+}
 function handleCat2Animation(){
-ghostCat.src="ghostcat.jpg";
 if (CONTROLS.player2.up && isOnAPlatform2()!=-100&&!CONTROLS.player2.down) {
   CAT.Player2.v = -6.5; //changing this value will affect how high the cat jumps
 }
@@ -16,9 +19,11 @@ if (CONTROLS.player2.down&&!CONTROLS.player2.up) {
 
 if (CONTROLS.player2.left && !isRightOfAPlatform2()) {
   CAT.Player2.x -= CAT.Player2.xvel;//cat moves left
+  ghostCat.src="DeadCatLeft.png";
 }
 if (CONTROLS.player2.right && !isLeftOfAPlatform2()) {
   CAT.Player2.x += CAT.Player2.xvel;//cat moves right
+  ghostCat.src="DeadCatRight.png";
 }
 
 // Check if cat is leaving the boundary, if so, dont let it
@@ -60,40 +65,15 @@ if (CONTROLS.player2.instaDeath){
 
 }
 function handleCatAnimation() {
-
-//this is the part that change's the cat's picture based on which life it's on. note that there's currently no way to change which life the cat is on, except by typing CAT.Player1.lifeCount-- in the inspect element console
-  switch (CAT.Player1.lifeCount) {
-    case 9:
-      catImage.src = "Cat pics/Cat1.png";
-      break;
-    case 8:
-      catImage.src = "Cat pics/CatBlue.png";
-      break;
-    case 7:
-      catImage.src = "Cat pics/CatGray.png";
-      break;
-    case 6:
-      catImage.src = "Cat pics/CatGreen.png";
-      break;
-    case 5:
-      catImage.src = "Cat pics/CatOrange.png";
-      break;
-    case 4:
-      catImage.src = "Cat pics/CatPink.png";
-      break;
-    case 3:
-      catImage.src = "Cat pics/CatPurple.png";
-      break;
-    case 2:
-      catImage.src = "Cat pics/CatRed.png";
-      break;
-    case 1:
-      catImage.src = "Cat pics/CatYellow.png";
-      break;
-    default:
-      catImage.src = "Cat pics/CatBlakc.png";
-      break;
-  }
+var spritename = "Cat pics/CatLife"
+spritename+=CAT.Player1.lifeCount
+    if (CAT.Player1.direction==1){
+      spritename+="Left";
+    }else{
+      spritename+="Right";
+    }
+      spritename+=".png";
+      catImage.src=spritename;
 
 //this lets the cat jump if she's on a platform
   if (CONTROLS.cat.up && isOnAPlatform()!=-100&&!CONTROLS.cat.down) {
@@ -108,9 +88,11 @@ function handleCatAnimation() {
 
   if (CONTROLS.cat.left && !isRightOfAPlatform()) {
     CAT.Player1.x -= 4;//cat moves left
+    CAT.Player1.direction=1;
   }
   if (CONTROLS.cat.right && !isLeftOfAPlatform()) {
     CAT.Player1.x += 4;//cat moves right
+    CAT.Player1.direction=0;
   }
 
   // Check if cat is leaving the boundary, if so, dont let it
@@ -144,9 +126,23 @@ function handleCatAnimation() {
  if (isOnATuna()||isLeftOfATuna()||isRightOfATuna()||isUnderATuna()){
    CAT.Player1.tunaCount+=1;
  }
+ if (isOnGoal()||isUnderGoal()||isLeftOfGoal()||isRightOfGoal()){
+     CAT.Player1.direction=1;
+  CAT.Player1.x = 50;
+   CAT.Player1.y= 50;
+   CAT.Player1.v= 0;
+   CAT.Player1.a= .25;
+   CAT.Player1.lifeCount= 9;
+   GAME.level++;
+  }
   }
 
-
+function RenderEnd(context){
+  home.src="CatHouse.png";
+  for (var i=0;i<END[GAME.level].length;i++){
+      var hom=END[GAME.level][i];      context.drawImage(home,hom.xpt, hom.ypt, hom.xl, hom.yl);
+  }
+}
 function RenderCat(context) { //draws the cat to the screen
   context.drawImage(catImage, CAT.Player1.x, CAT.Player1.y, CAT.Player1.size, CAT.Player1.size);
 }
@@ -156,13 +152,15 @@ function RenderCat2(context){
 function RenderHazards(context){
 var hazard=new Image();
 hazard.src = "hazard.png";
-  for (const haz of HAZARDS)
-    context.drawImage(hazard,haz.xpt, haz.ypt, haz.xl, haz.yl);
+for (var i=0;i<HAZARDS[GAME.level].length;i++){
+    var haz=HAZARDS[GAME.level][i];     context.drawImage(hazard,haz.xpt, haz.ypt, haz.xl, haz.yl);
+}
 }
 function RenderTuna(context){
   var tuna1 = new Image();
   tuna1.src= " tuna.png"
-  for (const tuna of TUNA){
+  for (var i=0;i<TUNA[GAME.level].length;i++){
+      var tuna=TUNA[GAME.level][i];
       if (!tuna.collected){
       context.drawImage(tuna1,tuna.xpt,tuna.ypt,tuna.xl,tuna.yl);
     }
@@ -172,8 +170,10 @@ function RenderTuna(context){
 function RenderPlatforms(context) { //draws every platform in PLATFORMS onnto the screen
 var platforms = new Image();
 platforms.src = "dirt.png";
-  for (const plat of PLATFORMS)
-    context.drawImage(platforms,plat.xpt, plat.ypt, plat.xl, plat.yl); //you can replace this with .drawImage once you have pictures for the platforms
+for (var i=0;i<PLATFORMS[GAME.level].length;i++){
+    var plat=PLATFORMS[GAME.level][i];
+       context.drawImage(platforms,plat.xpt, plat.ypt, plat.xl, plat.yl); //you can replace this with .drawImage once you have pictures for the platforms
+}
 }
 
 function runGame() { //the basic game-running loop. handle with caution
@@ -195,12 +195,13 @@ function runGame() { //the basic game-running loop. handle with caution
     context.clearRect(0, 0, 600, 300);
 
     // 3 - Draw the stuff to the screen
+    renderSpawn(context);
     RenderCat(context);
     RenderCat2(context);
     RenderPlatforms(context);
     RenderHazards(context);
     RenderTuna(context);
-
+    RenderEnd(context);
   } else {
     context.font = "30px Arial";
     context.fillText("Game Over", 220, 150);
