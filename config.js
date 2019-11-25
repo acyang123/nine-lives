@@ -149,8 +149,13 @@ var HAZARDS = [[
   {xpt:575,ypt:125 , xl:25 , yl: 25},
   {xpt:575,ypt:150 , xl:25 , yl: 25},
   {xpt:575,ypt:200 , xl:25 , yl: 25},
-  {xpt:325,ypt:175 , xl:25 , yl: 25}
-
+  {xpt:325,ypt:175 , xl:25 , yl: 25},
+  {xpt:575,ypt:175 , xl:25 , yl: 25},
+  {xpt:100,ypt:225 , xl:25 , yl: 25},
+  {xpt:125,ypt:175 , xl:25 , yl: 25},
+  {xpt:25,ypt:225 , xl:25 , yl: 25},
+  //{xpt:125,ypt:175 , xl:25 , yl: 25},
+  {xpt:75,ypt:125 , xl:25 , yl: 25},
 ]
 ]
 var TUNA = [[

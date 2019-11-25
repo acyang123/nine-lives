@@ -193,7 +193,7 @@ function runGame() { //the basic game-running loop. handle with caution
   var context = canvas.getContext('2d');
 if (GAME.level>=GAME.levelmax){
   window.location.href = "http://gamer.sex";
-}else if (GAME.level>-1) { //when the player loses, GAME.started should be set to FALSE
+}else if (GAME.level!=-1) { //when the player loses, GAME.started should be set to FALSE
     GAME.movement+=1;
     HAZARDS[2][1].xpt=25*(GAME.movement/5);
     HAZARDS[2][2].xpt=25*(GAME.movement/5)+75;
@@ -213,6 +213,7 @@ if (GAME.level>=GAME.levelmax){
     context.clearRect(0, 0, 600, 300);
 
     // 3 - Draw the stuff to the screen
+  if (  GAME.level<GAME.levelmax){
     renderSpawn(context);
     RenderCat(context);
     if(CAT.Player2.on){
@@ -223,6 +224,7 @@ if (GAME.level>=GAME.levelmax){
     RenderHazards(context);
     RenderTuna(context);
     RenderEnd(context);
+  }
   } else {
     document.getElementById("b").onmouseover = function() {
       if (GAME.level==-1){
