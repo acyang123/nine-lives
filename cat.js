@@ -8,7 +8,7 @@ function initializeCat(){
       height : 300
     },
     started : true,
-    level : 1
+    level : -1
   }
   CAT = {
     tunaCount: 0,
@@ -25,6 +25,7 @@ function initializeCat(){
     name: "Tuesday McDoom"
   },
   Player2:{
+    on: false,
     direction: 1,
   x : 50,
   y: 50,

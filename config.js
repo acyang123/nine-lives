@@ -6,7 +6,7 @@ var GAME = {
     height : 300
   },
   started : true,
-  level : 0
+  level : -1
 };
 
 var CAT = {

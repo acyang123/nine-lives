@@ -180,7 +180,7 @@ function runGame() { //the basic game-running loop. handle with caution
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
 
-  if (GAME.started) { //when the player loses, GAME.started should be set to FALSE
+  if (GAME.level>-1) { //when the player loses, GAME.started should be set to FALSE
 
     // 1 - Reposition the cat
     handleCatAnimation();
@@ -189,7 +189,6 @@ function runGame() { //the basic game-running loop. handle with caution
       killCat();
 
     }
-    handleCat2Animation();
 
     // 2 - Clear the CANVAS
     context.clearRect(0, 0, 600, 300);
@@ -197,14 +196,22 @@ function runGame() { //the basic game-running loop. handle with caution
     // 3 - Draw the stuff to the screen
     renderSpawn(context);
     RenderCat(context);
+    if(CAT.Player2.on){
+    handleCat2Animation();
     RenderCat2(context);
+}
     RenderPlatforms(context);
     RenderHazards(context);
     RenderTuna(context);
     RenderEnd(context);
   } else {
+    document.getElementById("b").onmouseover = function() {
+      GAME.level=0;
+CAT.Player2.on=true;};
+document.getElementById("a").onmouseover = function() {
+GAME.level=0;};
     context.font = "30px Arial";
-    context.fillText("Game Over", 220, 150);
+    context.fillText("Nine Lives", 220, 150);
   }
   window.requestAnimationFrame(runGame);
 }
