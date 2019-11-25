@@ -7,7 +7,8 @@ var GAME = {
   },
   started : true,
   level : -1,
-  movement:120
+  movement:120,
+  levelmax:3
 };
 
 var CAT = {
