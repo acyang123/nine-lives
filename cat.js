@@ -13,6 +13,8 @@ function initializeCat(){
   CAT = {
     tunaCount: 0,
     Player1:{
+      jump:2,
+      isDOG:false,
       direction: 1,
     x : 50,
     y: 50,
@@ -176,7 +178,7 @@ function addTempPlatform(x, y, w, l){
 }
 
 
-function removeTempPLATFORMS (){
+function removeTempPlatforms (){
   PLATFORMS[GAME.level] = PLATFORMS[GAME.level] .filter(function(objFromA) {
   return !TEMPPLATFORMS .find(function(objFromB) {
     return objFromA.xpt === objFromB.xpt && objFromA.ypt === objFromB.ypt && objFromA.xl === objFromB.xl && objFromA.yl === objFromB.yl
@@ -188,7 +190,7 @@ function removeTempPLATFORMS (){
 
 //this function CLEARS the level of all PLATFORMS , but keeps the floor. If there was some sort of levelCount, I'd put it in here.
 function killCat(){
-if(CAT.Player1.lifeCount>1){
+if(CAT.Player1.lifeCount>0){
   addPlatform(CAT.Player1.x,CAT.Player1.y,CAT.Player1.size,CAT.Player1.size);
   CONTROLS.cat.instaDeath=false;
   CAT.Player1.lifeCount-=1;

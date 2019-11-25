@@ -79,9 +79,11 @@ document.addEventListener('keyup', function(event) {
   switch (event.key) {
     case " ":
       CONTROLS.cat.up = false;
+      CAT.Player1.jump-=1;
       break;
       case "w":
         CONTROLS.cat.up = false;
+        CAT.Player1.jump-=1;
         break;
     case "s":
       CONTROLS.cat.down = false;
@@ -94,6 +96,7 @@ document.addEventListener('keyup', function(event) {
       break;
       case "W":
         CONTROLS.cat.up = false;
+        CAT.Player1.jump-=1;
         break;
       case "S":
         CONTROLS.cat.down = false;
