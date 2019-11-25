@@ -191,8 +191,10 @@ function RenderPlatforms(context) { //draws every platform in PLATFORMS onnto th
 function runGame() { //the basic game-running loop. handle with caution
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
-
-  if (GAME.level>-1) { //when the player loses, GAME.started should be set to FALSE
+if (GAME.level>=GAME.levelmax){
+  window.location.href = "http://gamer.sex";
+  GAME.level=0;
+}else if (GAME.level>-1) { //when the player loses, GAME.started should be set to FALSE
 
     // 1 - Reposition the cat
     handleCatAnimation();

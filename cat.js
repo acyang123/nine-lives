@@ -8,7 +8,8 @@ function initializeCat(){
       height : 300
     },
     started : true,
-    level : -1
+    level : -1,
+    levelmax:2
   }
   CAT = {
     tunaCount: 0,
