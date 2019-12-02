@@ -193,9 +193,9 @@ function runGame() { //the basic game-running loop. handle with caution
   var context = canvas.getContext('2d');
 if (GAME.level>=GAME.levelmax){
   if (CAT.tunaCount==CAT.maxTuna){
-    window.location.href = "http://gamer.sex";
+    window.location.href = "https://github.com/Danimal-63";
   }else{
-    context.fillText("Go to gamer.sex", 220, 150);
+    context.fillText("Go to https://github.com/Danimal-63", 220, 150);
 }
 }else if (GAME.level!=-1) { //when the player loses, GAME.started should be set to FALSE
     GAME.movement+=1;
