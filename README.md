@@ -9,24 +9,35 @@ Different levels will revolve around different environments and thus different m
 Multiplayer functionality, the second player will be a ghost cat that acts like the first player, but can choose to take over one of the corpses if they land on it and press down instead of picking it up. As the corpse it will be invulnerable for a few seconds and then teleport to player one. As a possessed corpse, the ghost can levitate instead of jumping. The two cats should be able to stand on top of each other but not bounce.
 
 Experimental feature: Instant death button which freezes your corpse in its exact position
-OR Play as a dog which cannot die, but has access to a double jump OR Each numbered corpse has a different ability / attribute and can be summoned with the numpad.
+OR Play as a dog which cannot die, but has access to a double jump OR
+Each numbered corpse has a different ability / attribute and can be summoned with the numpad
+	ex: pressing 1 creates a slippery platform
+	    pressing 2 creates a platform for higher jumping
+	    pressing 3 creates a platform with a magnetic pull
+	    pressing 4 creates a platform than can be fallen through
+	    
+
+Experimental Features 2: Make the corpses created by pressing r for player 1 become thorwable throwable and be used for puzzle solving
+
+
 
 Controls:
 
 	Player 1
-		W: jump
+		W/ Space Bar: jump
 		A: left movement
 		D: Right movement
-		S: Pick up corpse
-		“ “ : throw corpse in the direction facing
+		S: Fast Fall
+		R: Die/Respawn (creates Platform)
 
 
 
 	Player 2:
-		UP arrow Jump/Levitate
-		Down arrow : Possess
+		UP arrow Jump
+		Down arrow : Fast Fall
 		Right arrow: Right movement
 		Left arrow: left movement
+		Shift: Temporary Platform creation
 
 	Player 1 EXPERIMENTAL
 		Each one gives the most recent corpse a new ability
