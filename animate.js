@@ -149,7 +149,58 @@ if (isOnAPlatform()!=-100){
     GAME.level++;
   }
 }
+function handleEnemyAnimation () {
+  var random=Math.random()*2+1;
+  var distanceX=ENEMY.x-CAT.Player1.x;
+  var distanceY=ENEMY.y-CAT.Player1.y;
+  var relativeDirection;
+  if (distanceX>0&&distanceY>0)
+  {
+    relativeDirection=1;
+  }
+  else if (distanceX>0&&distanceY<0)
+  {
+    relativeDirection=2;
+  }
+  else if (distanceX<0&&distanceY>0)
+  {
+    relativeDirection=3;
+  }
+  else if (distanceX<0&&distanceY<0)
+  {
+    relativeDirection=2;
+  }
 
+  if (random==1)
+  {
+    if (relativeDirection==1)
+    {
+      ENEMY.x+=GAME.canvas.width/6;
+      ENEMY.y+=GAME.canvas.height/6;
+    }
+    else if (relativeDirection==2)
+    {
+      ENEMY.x+=GAME.canvas.width/6;
+      ENEMY.y-=GAME.canvas.height/6;
+    }
+    else if (relativeDirection==2)
+    {
+      ENEMY.x-=GAME.canvas.width/6;
+      ENEMY.y+=GAME.canvas.height/6;
+    }
+    else if (relativeDirection==2)
+    {
+      ENEMY.x-=GAME.canvas.width/6;
+      ENEMY.y-=GAME.canvas.height/6;
+    }
+
+  }
+  if (random==2)
+  {
+    
+  }
+
+}
 function RenderEnd(context){
   home.src="CatHouse.png";
   for (var i=0;i<END[GAME.level].length;i++){
