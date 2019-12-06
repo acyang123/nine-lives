@@ -46,6 +46,17 @@ function initializeCat(){
   }
   };
 }
+
+function initializeEnemy
+{
+  var canvas = document.getElementById('mainCanvas');
+  var context = canvas.getContext('2d');
+  context.scale(1,1);
+  ENEMY ={
+    x : 50,
+    y: 50
+  }
+}
 function becomeCorpse(){
   CAT.Player2.v=0;
   addPlatform(CAT.Player2.x,CAT.Player2.y,CAT.Player2.size,CAT.Player2.size);
