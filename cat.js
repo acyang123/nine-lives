@@ -42,6 +42,7 @@ function initializeCat(){
   lifeCount: 1,
   xvel: 4,
   name: "Monday McDoom"
+
   }
   };
 }

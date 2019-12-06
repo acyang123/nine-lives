@@ -41,6 +41,12 @@ name: "Monday McDoom"
 }
 };
 
+var ENEMY = {
+  direction: 0,
+  x : 50,
+  y: 50
+};
+
 
 var PLATFORMS = [
   [

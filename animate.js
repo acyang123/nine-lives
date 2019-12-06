@@ -2,6 +2,7 @@
 var catImage = new Image();
 var ghostCat = new Image();
 var home = new Image();
+var enemy=new Image();
 function renderSpawn(context){
   home.src="CatHouse.png";
   context.drawImage(home,50,50,25,25);
@@ -160,6 +161,9 @@ function RenderCat(context) { //draws the cat to the screen
 }
 function RenderCat2(context){
   context.drawImage(ghostCat,CAT.Player2.x,CAT.Player2.y, CAT.Player2.size, CAT.Player2.size);
+}
+function RenderEnemy(context){
+  context.drawImage(enemy,ENEMY.x,ENEMY.y, ENEMY.size, ENEMY.size);
 }
 function RenderHazards(context){
   var hazard=new Image();
