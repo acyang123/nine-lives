@@ -197,7 +197,8 @@ function handleEnemyAnimation () {
   }
   if (random==2)
   {
-    
+    ENEMY.x+=150*(Math.random()*2-1);
+    ENEMY.y+=150*(Math.random()*2+1);
   }
 
 }
@@ -262,6 +263,8 @@ if (GAME.level>=GAME.levelmax){
     }
     // 1 - Reposition the cat
     handleCatAnimation();
+    RenderEnemy(context);
+    handleEnemyAnimation();
     if (CONTROLS.cat.instaDeath){
 
       killCat();
@@ -275,6 +278,8 @@ if (GAME.level>=GAME.levelmax){
   if (  GAME.level<GAME.levelmax){
     renderSpawn(context);
     RenderCat(context);
+    RenderEnemy(context);
+    handleEnemyAnimationEnemy();
     if(CAT.Player2.on){
       handleCat2Animation();
       RenderCat2(context);
