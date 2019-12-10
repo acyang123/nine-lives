@@ -49,7 +49,7 @@ function initializeCat(){
   mySound.play();
 }
 
-function initializeEnemy()
+function initializeEnemy ()
 {
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
