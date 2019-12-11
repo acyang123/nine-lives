@@ -279,7 +279,7 @@ if (GAME.level>=GAME.levelmax){
     renderSpawn(context);
     RenderCat(context);
     RenderEnemy(context);
-    handleEnemyAnimationEnemy();
+    handleEnemyAnimation();
     if(CAT.Player2.on){
       handleCat2Animation();
       RenderCat2(context);
