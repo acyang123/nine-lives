@@ -1,7 +1,6 @@
 function initializeCat(){
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
-  var mySound = new startMusic("music.mp3") ;
   context.scale(1,1);
   GAME = {
     canvas : {
@@ -46,7 +45,7 @@ function initializeCat(){
 
   }
   };
-  mySound.play();
+  music.play();
 }
 
 function initializeEnemy ()
