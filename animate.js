@@ -280,6 +280,9 @@ if (GAME.level>=GAME.levelmax){
     RenderCat(context);
     RenderEnemy(context);
     handleEnemyAnimationEnemy();
+
+
+
     if(CAT.Player2.on){
       handleCat2Animation();
       RenderCat2(context);
@@ -307,6 +310,11 @@ if (GAME.level>=GAME.levelmax){
     }
         context.font = "30px Arial";
         context.fillText("Nine Lives", 220, 150);
+
+        context.font = "20px Arial";
+        context.fillText("Lives: " + CAT.Player1.lifeCount, 50, 20);
+
+
       }
       window.requestAnimationFrame(runGame);
     }
