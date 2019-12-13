@@ -245,6 +245,7 @@ function RenderPlatforms(context) { //draws every platform in PLATFORMS onnto th
 }
 
 function runGame() { //the basic game-running loop. handle with caution
+var music = new Audio('music.mp3');
   var canvas = document.getElementById('mainCanvas');
   var context = canvas.getContext('2d');
 if (GAME.level>=GAME.levelmax){
