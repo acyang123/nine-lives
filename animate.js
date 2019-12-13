@@ -280,7 +280,7 @@ if (GAME.level>=GAME.levelmax){
     renderSpawn(context);
     RenderCat(context);
     RenderEnemy(context);
-    handleEnemyAnimationEnemy();
+    //handleEnemyAnimationEnemy();
 
 
 
@@ -292,6 +292,8 @@ if (GAME.level>=GAME.levelmax){
     RenderHazards(context);
     RenderTuna(context);
     RenderEnd(context);
+    context.font = "20px Arial";
+    context.fillText("Lives: " + CAT.Player1.lifeCount, 50, 20);
   }
   } else {
     document.getElementById("b").onmouseover = function() {
@@ -312,8 +314,7 @@ if (GAME.level>=GAME.levelmax){
         context.font = "30px Arial";
         context.fillText("Nine Lives", 220, 150);
 
-        context.font = "20px Arial";
-        context.fillText("Lives: " + CAT.Player1.lifeCount, 50, 20);
+
 
 
       }
